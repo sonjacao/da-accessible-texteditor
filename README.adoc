@@ -1,0 +1,37 @@
+= Diplomarbeit: Barrierefreier WYSIWYG Rich Text Editor
+
+|===
+| *Eingereicht von:* | Halil Bahar, 5AHITM +
+                     Sonja Cao, 5AHITM
+| *Datum:*           | 5. April 2021
+| *Betreuer:*        | Prof. Mag. Dr. Thomas Stütz
+| *Projektpartner:*  | Fabasoft Software GmbH
+|===
+
+== Einleitung
+
+include::Einleitung.adoc[leveloffset=+1]
+
+== Gleichbehandlungsgesetz
+
+include::Gleichbehandlungsgesetz.adoc[leveloffset=+1]
+
+== Verwendete Technologien
+
+include::Technologien.adoc[leveloffset=+1]
+
+== Erweiterung des Texteditors Trix
+
+include::Trix-Extension.adoc[leveloffset=+1]
+
+== Resümee
+
+include::Resuemee.adoc[leveloffset=+1]
+
+== Additional Information
+
+include::Additional_Information.adoc[leveloffset=+1]
+
+== Verantwortungsbereiche
+
+include::Verantwortungsbereiche.adoc[leveloffset=+1]

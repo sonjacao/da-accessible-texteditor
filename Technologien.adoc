@@ -1,0 +1,27 @@
+== Entwurf
+
+ Hierzu findet eine DOM Manipulation statt, die die Toolbar von Trix während dem Prozess des Initialisierens ersetzt und dennoch alle Standard-Funktionalitäten und einige mehr zur Verfügung stellt. 
+
+[plantuml, png]
+----
+@startuml
+
+node "Document Object Model" {
+    [<trix-editor>]
+    [<trix-toolbar>]
+}
+
+frame library {
+}
+
+[<trix-editor>] <-r- library : bestehende Funktion aufrufen
+[<trix-toolbar>] <-r- library : DOM manipulieren
+[<trix-toolbar>] <--> [<trix-editor>]: Kommunikation mit MVC Pattern
+
+@enduml
+----
+Abbildung: Schnittstellen - Die Library greift auf das `<trix-editor>` Element zu und verändert dementsprechend das DOM. Die Funktionalitäten von Trix sind weiterhin benutzbar.
+== Ausgewählte Aspekte und Probleme
+
+== Software Development Tool Stack
+=== Git

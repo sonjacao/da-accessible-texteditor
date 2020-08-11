@@ -1,0 +1,13 @@
+== Ausgangssituation
+
+== Zielsetzung
+
+== Überblick
+
+== Bestehendes System
+
+== Probleme
+
+== Sollzustand
+=== Funktionale Anforderungen
+=== Nichtfunktionale Anforderungen
