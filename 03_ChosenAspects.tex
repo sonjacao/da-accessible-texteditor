@@ -1,0 +1,81 @@
+\chapter{Ausgewählte Aspekte}
+\section{DOM Manipulation}
+
+% Factory Pattern, Events, Delegate, Observer
+\section{Factory Pattern}
+
+\section{JavaScript Events \& EventListener}
+\paragraph{trix-initialize}\mbox{}\\
+Sobald das Trix-Editor Element im DOM eingefügt wird und sein Editor-Objekt zur Benutzung bereit ist, wird das Event \texttt{trix-initialize} gefeuert.\\
+Beim Initialisieren der Toolbar wird auf das von Trix definierte Event \texttt{trix-initialize} gehört. Damit aber nicht die Standard Toolbar sondern die erweiterte Toolbar, die diese ersetzen soll, angezeigt wird, hört bei der Trix-Extension ebenso ein \texttt{EventListener} zu. Sobald das Event gefeuert wird, werden die standardmäßigen Button-Gruppen und Buttons mit denen aus der eigens erstellten Toolbar ersetzt und können mit Screenreadern und Tastaturen barrierefrei bedient werden.
+
+\paragraph{mousedown}\mbox{}\\
+Das \texttt{mousedown} Event wird genau zu dem Zeitpunkt gefeuert, an dem sich der Mauszeiger auf einem Element befindet und dieses drückt.\\
+Damit ein Button in der Trix-Toolbar aktiv ist und sozusagen ``geklickt`` wird, hört dieser standardmäßig auf ein \texttt{mousedown} Event. In der Erweiterung von Trix wird dieses Event simuliert mit \texttt{EventTarget.dispatchEvent()} und somit sind die Buttons in der Toolbar auch über die Tastatur bedienbar, was vor allem bei Blinden oder bei Benutzern mit motorischen Beeinträchtigungen relevant ist.
+
+\paragraph{keydown}
+Wenn eine beliebige Taste gedrückt ist, wird das \texttt{keydown} Event gefeuert und liefert einen Code, der aussagt, welche Tasten im Moment gedrückt werden.\\
+Um den WYSIWYG Texteditor mittels einer Tastatur bedienen zu können, wurde darauf gewartet bis das \texttt{keydown} Event gefeuert wurde. Je nachdem, welche Taste gedrückt wird, wird entweder der nächste oder der vorherige Button oder die Button-Gruppe fokussiert, geklickt oder der Cursor zur weiteren Texteingabe und Textformatierung in den Editor gesetzt.\\
+\\Folgende Tasten und Tastenkombinationen gelten in der Toolbar und im Editor:
+
+\begin{table}[H]
+\begin{tabular}{lp{9cm}l}
+\hline
+Taste bzw. Tastenkombination & Beschreibung                                                                                                                                                               \\ \hline
+\texttt{ALT + F10} & Befindet sich der Cursor im Editor, dann gelangt man mit dieser Tastenkombination in die Toolbar und der erste vorkommende Button wird fokussiert.                         \\ \hline
+\texttt{→ oder ↓} & Der nächste bzw. rechte Button in der Toolbar wird fokussiert.                                                                                                             \\ \hline
+\texttt{← oder ↑} & Der vorherige bzw. linke Button in der Toolbar wird fokussiert.                                                                                                            \\ \hline
+\texttt{STRG + →/↓} & Der erste Button der nächsten bzw. rechten Gruppe wird fokussiert.                                                                                                         \\ \hline
+\texttt{STRG + ←/↑} & Der erste Button der vorherigen bzw. linken Gruppe wird fokussiert.                                                                                                        \\ \hline
+\texttt{ENTER oder LEERTASTE} & Der aktuell fokussierte Button wird geklickt.                                                                                                                              \\ \hline
+\texttt{ESC} & Befindet sich der Fokus in der Toolbar und wird die Taste gedrückt, so wird wieder der Editor fokussiert und der Cursor befindet sich an der zuletzt verwendeten Position. 
+\\ \hline
+\texttt{POS1} & Der erste in der Toolbar vorkommende Button wird fokussiert.                                                                                                               \\ \hline
+\texttt{ENDE} & Der letzte in der Toolbar vorkommende Button wird fokussiert.                                                                                                              \\ \hline
+\end{tabular}
+\end{table}
+
+\paragraph{focusout}
+Sobald ein Element im Begriff dabei ist den Fokus zu verlieren, wird das \texttt{focusout} Event gefeuert.\\
+Das Dropdown Menü jedes \texttt{DropdownButtons}~\ref{dropdown_button} erhält beim Initialisieren das Attribut \texttt{hidden}, damit es zu Beginn für den Benutzer nicht sichtbar ist. Sobald der Button geklickt wird, wird auch das Menü sichtbar und der Fokus auf den ersten Button gelegt. Wenn das Menü allerdings nicht mehr fokussiert ist, reagiert der \texttt{EventListener} auf das Event \texttt{focusout} und das Dropdown Menü erhält erneut das Attribut \texttt{hidden} und wird versteckt.
+
+\section{MutationObserver}
+Der \texttt{MutationObserver} ist ein Interface, der Veränderungen in der Baumstruktur des DOMs beobachtet und wurde konzipiert, um die Mutation Events aus der DOM3 Events Spezifikation abzulösen.\\
+Sobald die Toolbar geladen wird bzw. bestimmte Buttons geklickt werden, werden einige andere Buttons deaktiviert und erhalten das Attribut \texttt{disabled}. Dieses verhindert allerdings das Fokussieren eines Buttons, was mit dem Attribut \texttt{aria-disabled} problemlos funktioniert. Abhilfe verschafft deshalb ein \texttt{MutationObserver}. Erhält ein Button nun das Attribut \texttt{disabled}, beobachtet der \texttt{MutationObserver} diese Veränderung und entfernt es. Stattdessen fügt es das Attribut \texttt{aria-disabled} hinzu und setzt es auf \texttt{true}. Bei allen anderen Buttons, die nicht deaktiviert sind, ist \texttt{aria-disabled=false}.
+
+\section{Delegation}
+Die Delegation findet in der objektorientierten Programmierung verschieden Verwendung zur dynamischen Bindung von Methoden zur Programmlaufzeit.\\
+Jedem \texttt{AttributeButton} kann die Identifikation eines HTML-Elements mitgegeben werden, das einen Dialog repräsentiert und bereits im HTML-Code erstellt wurde. Die Delegation ermöglicht eine Kommunikation zwischen der Trix-Toolbar und dem Dialog. Sie dient ausschließlich dazu den Dialog zu öffnen und zu schließen, wobei zwei zusätzliche Funktionalitäten das Erstellen und das Entfernen von Links sind. Alles, was während oder nach dem Dialog geschieht, wird vom Entwickler selbst bestimmt.
+
+\section{Barrierefreie Toolbar}
+% kurz beschreiben, wie Toolbar accessible wird - was macht eine accessible Toolbar aus/was machen wir
+\subsection{Bedienbarkeit \& Navigation}
+
+\subsection{Toolbar Replacer Factory}
+% Baut die neue Toolbar
+
+\subsection{Toolbar Replacer}
+% Ersetzt die Toolbar
+
+\section{Elemente der Toolbar}
+\subsection{Gruppierung der Buttons}
+
+\subsection{Button Elemente}
+\label{subsec:buttons}
+Es werden vier verschiedene Arten von Buttons unterschieden: 
+
+\begin{itemize}
+	\item{\textbf{Action Button}}
+	\item{\textbf{Attribute Button}}
+	\item{\textbf{Clickable Button}}
+	\item{\textbf{Dropdown Button}}
+\end{itemize}
+
+\paragraph{Action Button}
+
+\paragraph{Attribute Button}
+
+\paragraph{Clickable Button}
+
+\paragraph{Dropdown Button}
+\label{dropdown_button}
