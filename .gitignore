@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/tex,latex
 # Edit at https://www.toptal.com/developers/gitignore?templates=tex,latex
 
+### Mac ###
+.DS_Store
+
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
 *.aux
