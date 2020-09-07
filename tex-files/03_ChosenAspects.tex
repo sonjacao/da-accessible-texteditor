@@ -13,7 +13,7 @@ Beim Initialisieren der Toolbar wird auf das von Trix definierte Event \texttt{t
 Das \texttt{mousedown} Event wird genau zu dem Zeitpunkt gefeuert, an dem sich der Mauszeiger auf einem Element befindet und dieses drückt.\\
 Damit ein Button in der Trix-Toolbar aktiv ist und sozusagen ``geklickt`` wird, hört dieser standardmäßig auf ein \texttt{mousedown} Event. In der Erweiterung von Trix wird dieses Event simuliert mit \texttt{EventTarget.dispatchEvent()} und somit sind die Buttons in der Toolbar auch über die Tastatur bedienbar, was vor allem bei Blinden oder bei Benutzern mit motorischen Beeinträchtigungen relevant ist.
 
-\paragraph{keydown}
+\paragraph{keydown}\mbox{}\\
 Wenn eine beliebige Taste gedrückt ist, wird das \texttt{keydown} Event gefeuert und liefert einen Code, der aussagt, welche Tasten im Moment gedrückt werden.\\
 Um den WYSIWYG Texteditor mittels einer Tastatur bedienen zu können, wurde darauf gewartet bis das \texttt{keydown} Event gefeuert wurde. Je nachdem, welche Taste gedrückt wird, wird entweder der nächste oder der vorherige Button oder die Button-Gruppe fokussiert, geklickt oder der Cursor zur weiteren Texteingabe und Textformatierung in den Editor gesetzt.\\
 \\Folgende Tasten und Tastenkombinationen gelten in der Toolbar und im Editor:
@@ -35,7 +35,7 @@ Taste bzw. Tastenkombination & Beschreibung                                     
 \end{tabular}
 \end{table}
 
-\paragraph{focusout}
+\paragraph{focusout}\mbox{}\\
 Sobald ein Element im Begriff dabei ist den Fokus zu verlieren, wird das \texttt{focusout} Event gefeuert.\\
 Das Dropdown Menü jedes \texttt{DropdownButtons}~\ref{dropdown_button} erhält beim Initialisieren das Attribut \texttt{hidden}, damit es zu Beginn für den Benutzer nicht sichtbar ist. Sobald der Button geklickt wird, wird auch das Menü sichtbar und der Fokus auf den ersten Button gelegt. Wenn das Menü allerdings nicht mehr fokussiert ist, reagiert der \texttt{EventListener} auf das Event \texttt{focusout} und das Dropdown Menü erhält erneut das Attribut \texttt{hidden} und wird versteckt.
 
