@@ -91,24 +91,53 @@ Ziel dieser Arbeit war es, den Mitarbeiten und Kunden von Fabasoft die Verwendun
 % Trix ohne Erweiterung - Wie verwendet? Produkt beschreiben
 \begin{figure}[H]
 \begin{center}
-	\includegraphics[scale=.6]{images/trix_components.png}
+	\includegraphics[scale=.4]{images/sysarch.png}
 \end{center}
-	\caption{Kommunikation zwischen der Toolbar und dem Editor ohne der Erweiterung}
+	\caption{Vereinfachte Darstellung der Kommunikation zwischen den Klassen}
 \end{figure}
 
-% Trix mit Erweiterung - Art von Formatvorlage, DOM Manipulation, evtl. Jenkinsfile
+Zur besseren Verständlichkeit wurden nur die Klassen dargestellt, die oberflächlich erkennbar sind. Trix unterscheidet sich bezüglich der Funktionalität von seiner Konkurrenz und ist deshalb um einiges komplexer. Sobald die Trix Library eingebunden ist, werden ihre selbstprogrammierten Elemente (\texttt{<trix-editor>}, \texttt{<trix-toolbar>}) registriert. Beim Verwenden eines Trix Editors wird dementsprechend der Controller und in diesem alle weiteren wichtigen Klassen instanziiert, die nicht unbedingt in der Darstellung ersichtlich ist. 
+
+\paragraph{EditorController}\mbox{}\\
+Dieser Controller ist einer der Klassen, die mehr Funktionalitäten beinhalten. Er kümmert sich um 
+
+\begin{itemize}
+	\item \texttt{InputEvents} bei jeder Tastatureingabe im Editor. Hier wird beispielsweise darauf geachtet, dass beim Einfügen eines Textes dessen Formatierung weiterhin bestehen bleibt.
+	\item Formatierungen bei Bedarf und das Aktivieren und Deaktivieren dieser, was aufgrund der Kommunikation zwischen den Controllern auch über die Toolbar möglich ist.
+	\item das Rendern, was bei jeder Änderung geschieht.
+\end{itemize}
+
+\paragraph{ToolbarController}\mbox{}\\
+Wie auch im Absatz davor erwähnt, kümmert sich dieser Controller um das Aktivieren und Deaktivieren von Formatierungen über die Buttons in der Toolbar. Er hat einen eigenen \texttt{EventListener} auf sich selbst (\texttt{<trix-toolbar>}). Die Besonderheit darin ist, dass beliebig viele Buttons verwendet werden können. Der Grund dafür ist, dass das Event das sogenannte ``Bubbling`` verwendet. Dies kann man sich wortwörtlich wie eine Blase Unterwasser vorstellen. Wenn ein Element ein Event besitzt, wird dieses Event auch Elementen darunter (Child Elements) ausgelöst. Diese Blase steigt in der Struktur auf und löst das Event aus.\\
+Die Buttons haben erst dann eine Funktion, wenn ein selbst definiertes HTML-Attribute hinzugefügt wird. Sobald das Event ausgelöst wird, überprüft der Controller, ob das Attribut vorhanden ist. Wenn ja, handelt er anhand des Wertes und formatiert (kursiv) oder löst eine Funktion (rückgängig) aus.
+
+\paragraph{DocumentView}\mbox{}\\
+Diese View ist für das gesamte Rendering im Editor zuständig. Das beinhaltet alle Textformatierungen und Textpositionierungen, die auch dementsprechend eine eigene View besitzen, wie etwa TextView für Texte oder AttachmentView für Bilder und Dokumente. Bei jedem Renderaufruf wird das alte Dokument mit einem neuen ersetzt.
+
+\subsection{Systemarchitektur mit Erweiterung}
+
 \begin{figure}[H]
 \begin{center}
-	\includegraphics[scale=.6]{images/trix-extension_components.png}
+	\includegraphics[scale=.4]{images/sysarch_extension.png}
 \end{center}
-	\caption{Schnittstellen zwischen dem Texteditor und der Bibliothek für die Erweiterung - Durch die DOM Manipulation können zusätzlich Buttons erstellt werden, die für Trix nicht vorgesehen waren (vgl. Trix-Extension Buttons \ref{subsec:buttons})}
+	\caption{Vereinfachte Darstellung der Kommunikation zwischen den Klassen mit der Erweiterung}
 \end{figure}
+
+Mit der geschriebenen Erweiterung ist es möglich, die Toolbar in wenigen Codezeilen robust und sicher zu ersetzen. Hierbei wird der gesamte Inhalt vom Toolbar Element überschrieben. Die Struktur bleibt dennoch gleich für Backwards Compatibility. Zusätzlich zu der neuen Anordnung- und Designmöglichkeit der Buttons werden ARIA-Rollen (Accessible Rich Internet Applications / WAI-ARIA, vgl. \cite{wai_aria_2017}) zugeordnet. Des Weiteren werden \texttt{KeyEvents} an \texttt{<trix-editor>} und \texttt{<trix-toolbar>} gehängt. Das Event für den Editor ist sehr simpel, denn er hört auf nur eine Tastenkombination, die es ermöglicht den Fokus auf die Toolbar zu legen. Bei der Toolbar reagiert das Event nur bei Tasten, wie
+
+\begin{itemize}
+	\item Pfeiltasten zum Navigieren zwischen den Buttons,
+	\item Pfeiltasten mit Steuerung-Taste zum Navigieren zwischen den Gruppen,
+	\item Escape-Taste zum Verlassen der Toolbar und Fokussieren des Editors,
+	\item Pos1- und Ende-Taste zum Navigieren zum jeweiligen ersten und letzten Button,
+	\item und Tab-Taste ignorieren, damit die Nutzer nicht verwirrt werden und die Orientierung verlieren.
+\end{itemize}
 
 \section{Sollzustand}
 % Erweiterung genauer beschreiben
 
 \subsection{Funktionale Anforderungen}
-Für diese Diplomarbeit sind keine funktionalen Anforderungen definiert.
+Für diese Diplomarbeit sind keine funktionalen Anforderungen definiert. Der Grund ist der, dass die Autoren der Meinung sind, dass es keine neuen funktionalen Anforderungen gibt, weshalb die Arbeit schwerwiegend auf nichtfunktionalen Anforderungen basiert.
 
 \subsection{Nichtfunktionale Anforderungen}
 
