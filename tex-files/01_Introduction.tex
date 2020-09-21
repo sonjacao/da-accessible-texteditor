@@ -8,14 +8,6 @@ Oftmals wird in Softwareprodukten der Fa. Fabasoft die Eingabe von einfachen, fo
 Übersetzt bedeutet ``What You See Is What You Get`` so viel wie ``Was du siehst, ist das, was du bekommst``. Der Text in einem WYSIWYG Editor wird bei der Ausgabe des Dokuments also genau so angezeigt, wie er bei seiner Bearbeitung aussieht.\\
 Ein Beispiel für solch einen Editor ist ``Trix``. Er ist ein Open Source WYSIWYG Texteditor vom Unternehmen Basecamp, den Machern von Ruby on Rails, und wurde von den beiden Entwicklern Sam Stephenson und Javan Makhmali der Community auf GitHub \cite{basecamp_trix_2013} zugänglich gemacht. Mithilfe dieses Editors können Nachrichten, Kommentare, Artikel, Listen und vieles mehr verfasst werden. Es besitzt ein selbst entwickeltes Document Object Model (DOM), das neben den gängigen JavaScript Events ebenso auf selbst definierte Events hört und eingebettete Anhänge unterstützt.
 
-\subsection{Document Object Model}
-\begin{figure}[H]
-\begin{center}
-	\includegraphics[scale=1]{images/dom_tree.png}
-\end{center}
-	\caption{Zusammenhang zwischen Trix und der Erweiterung}
-\end{figure}
-
 \section{Motivation}
 Der bisher integrierte Browser-UI-Control in Fabasoft Softwareprodukten weist einige Nachteile auf. Der sogenannte ``CKEditor`` \cite{ckeditor_v4_2020} in der Version 4 verliert seinen Long Term Support (LTS) im Jahr 2023. Dieser wird von der Version 5 \cite{ckeditor_v5_2020} abgelöst. Da die neue Version eine neue Lizenz mit sich bringt, ist dieser Texteditor in den Produkten nicht mehr weiterhin verwendbar. Der Grund dafür ist, dass die neue Lizenz unter den Bedingungen der GNU General Public License Version 2 or later (GPLv2) steht und der Sourcecode auf Nachfrage freigegeben werden muss. Das entspricht nicht der Philosophie der Firma. Darum wird der Editor durch ein alternatives Produkt abgelöst. Durch eine erste Analyse hat sich herausgestellt, dass sich der Texteditor {\em{Trix}} als Ersatz eignet. Allerdings ist dieser nicht barrierefrei.
 
