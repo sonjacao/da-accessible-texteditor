@@ -8,11 +8,37 @@ Oftmals wird in Softwareprodukten der Fa. Fabasoft die Eingabe von einfachen, fo
 Übersetzt bedeutet ``What You See Is What You Get`` so viel wie ``Was du siehst, ist das, was du bekommst``. Der Text in einem WYSIWYG Editor wird bei der Ausgabe des Dokuments also genau so angezeigt, wie er bei seiner Bearbeitung aussieht.\\
 Ein Beispiel für solch einen Editor ist ``Trix``. Er ist ein Open Source WYSIWYG Texteditor vom Unternehmen Basecamp, den Machern von Ruby on Rails, und wurde von den beiden Entwicklern Sam Stephenson und Javan Makhmali der Community auf GitHub \cite{basecamp_trix_2013} zugänglich gemacht. Mithilfe dieses Editors können Nachrichten, Kommentare, Artikel, Listen und vieles mehr verfasst werden. Es besitzt ein selbst entwickeltes Document Object Model (DOM), das neben den gängigen JavaScript Events ebenso auf selbst definierte Events hört und eingebettete Anhänge unterstützt.
 
+\subsection{Systemarchitektur}
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=.4]{images/sysarch.png}
+\end{center}
+	\caption{Vereinfachte Darstellung der Kommunikation zwischen den Klassen}
+\end{figure}
+
+Zur besseren Verständlichkeit wurden nur die Klassen dargestellt, die oberflächlich erkennbar sind. Trix unterscheidet sich bezüglich der Funktionalität von seiner Konkurrenz und ist deshalb um einiges komplexer. Außerdem verwendet er den Standard der Web Components (\ref{web_comp}). Sobald die Trix Library eingebunden ist, werden ihre benutzerdefinierten HTML-Elemente (\texttt{<trix-editor>}, \texttt{<trix-toolbar>}) registriert. Beim Verwenden eines Trix Editors werden dementsprechend der Controller und in diesem alle weiteren wichtigen Klassen instanziiert, die nicht unbedingt in der Darstellung ersichtlich sind. 
+
+\paragraph{EditorController}\mbox{}\\
+Dieser Controller ist eine der Klassen, die umfangreichere Funktionalitäten beinhalten. Er kümmert sich um 
+
+\begin{itemize}
+	\item \texttt{InputEvents} bei jeder Tastatureingabe im Editor. Hier wird beispielsweise darauf geachtet, dass beim Einfügen eines Textes dessen Formatierung weiterhin bestehen bleibt.
+	\item Formatierungen bei Bedarf und das Aktivieren und Deaktivieren dieser, was aufgrund der Kommunikation zwischen den Controllern auch über die Toolbar möglich ist.
+	\item das Rendering, wobei er es im \texttt{DocumentView} auslöst.
+\end{itemize}
+
+\paragraph{ToolbarController}\mbox{}\\
+Wie auch im Absatz davor erwähnt, kümmert sich dieser Controller um das Aktivieren und Deaktivieren von Formatierungen über die Buttons in der Toolbar. Er hat einen eigenen \texttt{EventListener} auf sich selbst (\texttt{<trix-toolbar>}). Die Besonderheit besteht darin, dass beliebig viele Buttons verwendet werden können. Der Grund dafür ist, dass das Event das sogenannte ``Bubbling`` verwendet. Dies kann man sich wortwörtlich wie eine Blase unter Wasser vorstellen. Wenn ein HTML-Element ein Event besitzt, wird dieses Event auch von HTML-Elementen darunter (Child Elements) ausgelöst. Diese Blase steigt in der Struktur auf und löst das Event aus.\\
+Die Buttons haben erst dann eine Funktion, wenn ein selbst definiertes HTML-Attribut hinzugefügt wird. Sobald das Event ausgelöst wird, überprüft der Controller, ob das Attribut vorhanden ist. Wenn das der Fall ist, handelt er anhand des Wertes und formatiert (kursiv) oder löst eine Funktion (rückgängig) aus.
+
+\paragraph{DocumentView}\mbox{}\\
+Diese View ist für das gesamte Rendering im Editor zuständig. Das beinhaltet alle Textformatierungen und Textpositionierungen, die auch dementsprechend eine eigene View besitzen, wie etwa TextView für Texte oder AttachmentView für Bilder und Dokumente. Bei jedem Aufruf des Rederings wird das alte Dokument durch ein neues ersetzt.
+
 \section{Motivation}
 Der bisher integrierte Browser-UI-Control in Fabasoft Softwareprodukten weist einige Nachteile auf. Der sogenannte ``CKEditor`` \cite{ckeditor_v4_2020} in der Version 4 verliert seinen Long Term Support (LTS) im Jahr 2023. Dieser wird von der Version 5 \cite{ckeditor_v5_2020} abgelöst. Da die neue Version eine neue Lizenz mit sich bringt, ist dieser Texteditor in den Produkten nicht mehr weiterhin verwendbar. Der Grund dafür ist, dass die neue Lizenz unter den Bedingungen der GNU General Public License Version 2 or later (GPLv2) steht und der Sourcecode auf Nachfrage freigegeben werden muss. Das entspricht nicht der Philosophie der Firma. Darum wird der Editor durch ein alternatives Produkt abgelöst. Durch eine erste Analyse hat sich herausgestellt, dass sich der Texteditor {\em{Trix}} als Ersatz eignet. Allerdings ist dieser nicht barrierefrei.
 
-\subsection{Gleichstellung von Menschen mit Behinderungen}
-In der Gesellschaft und im Alltag machen Menschen mit Behinderungen oftmals mit kleineren oder größeren Benachteiligungen Bekanntschaft. Global haben etwa 15 Prozent der Weltbevölkerung eine Behinderung, wobei die rund eine Milliarden Kinder und Erwachsenen assistive Technologien, wie beispielsweise Rollstühle oder Hörgeräte, benötigen. International hat jedes Land eine eigene Definition für den Begriff, weshalb die WHO (World Health Organisation, vgl. \cite{who_disability_2011}) diesen nur grob beschreiben kann. Sie geht dabei immer von drei Punkten aus:
+\subsection{Gleichstellung von Menschen mit Behinderung}
+In der Gesellschaft und im Alltag machen Menschen mit Behinderung oftmals mit kleineren oder größeren Benachteiligungen Bekanntschaft. Global haben etwa 15 Prozent der Weltbevölkerung eine Art von Beeinträchtigung, wobei die rund eine Milliarden Kinder und Erwachsenen assistive Technologien, wie beispielsweise Rollstühle oder Hörgeräte, benötigen. International hat jedes Land eine eigene Definition für den Begriff, weshalb die WHO (World Health Organisation, vgl. \cite{who_disability_2011}) diesen nur grob beschreiben kann. Sie geht dabei immer von drei Punkten aus:
 
 \begin{itemize}
     \item \textbf{Impairment (dt. Schädigung)} bezeichnet jede Anomalie oder jeden Verlust der anatomischen, psychischen oder physiologischen Funktionen und Strukturen des menschlichen Körpers.
@@ -74,39 +100,14 @@ Das Web-Zugänglichkeits-Gesetz (WZG, vlg. \cite{ris_wzg_2020}) umfasst alle rec
 \mbox{}\\Damit diese Dienstleistungen fortlaufend zugänglich sind, müssen die oben genannten Anforderungen regelmäßig überprüft werden. Grundsätzlich hat jede Nutzerin und jeder Nutzer das Recht dazu, sich über Mängel bei Nichteinhaltung der Barrierefreiheit zu beschweren, die dann, wenn sie berechtigt sind, beseitigt werden müssen. 
 
 \section{Aufgabenstellung}
-Im Rahmen dieser Diplomarbeit ist der Texteditor {\em{Trix}} so erweitert worden, dass er den Ansprüchen für die Produkte der Fa. Fabasoft gerecht wird, mit dem Ziel, dass er von allen Personen einfach und ohne Probleme bedient werden kann. Insbesondere wurden die Kriterien des WCAG 2.1 (Web Content Accessibility Guidelines \cite{wcag_2_1_2018}) erfüllt sowie eine Bedienung mit Screenreadern und vollständig mit Tastatur ermöglicht worden.
+Im Rahmen dieser Diplomarbeit wurde eine Erweiterung für den Texteditor {\em{Trix}} geschrieben, sodass dieser den Ansprüchen für die Produkte der Fa. Fabasoft gerecht wird. Er sollte weitestgehend von allen Personen einfach und ohne Probleme bedient werden können. Insbesondere wurden die Kriterien des WCAG 2.1 (Web Content Accessibility Guidelines~\ref{wcag_2_1}) erfüllt sowie eine Bedienung mit Screenreadern und vollständig mit Tastatur ermöglicht worden.
 
 \section{Zielsetzung}
-Ziel dieser Arbeit war es, den Mitarbeiten und Kunden von Fabasoft die Verwendung eines Texteditors weiterhin zu ermöglichen sowie den bis dahin verwendeten Editor abzulösen. Des Weiteren sind mindestens dessen bisher verfügbaren Funktionalitäten bereitgestellt und alle Kriterien des WCAG 2.1 erfüllt.
+Ziel dieser Arbeit war es, den Mitarbeiten und Kunden von der Fa. Fabasoft die Verwendung des Systems weiterhin zu ermöglichen und die notwendigen Kriterien des WCAG 2.1 zu erfüllen.
 
-\subsection{Systemarchitektur}
-% Trix ohne Erweiterung - Wie verwendet? Produkt beschreiben
-\begin{figure}[H]
-\begin{center}
-	\includegraphics[scale=.4]{images/sysarch.png}
-\end{center}
-	\caption{Vereinfachte Darstellung der Kommunikation zwischen den Klassen}
-\end{figure}
+\section{Sollzustand}
 
-Zur besseren Verständlichkeit wurden nur die Klassen dargestellt, die oberflächlich erkennbar sind. Trix unterscheidet sich bezüglich der Funktionalität von seiner Konkurrenz und ist deshalb um einiges komplexer. Sobald die Trix Library eingebunden ist, werden ihre selbstprogrammierten Elemente (\texttt{<trix-editor>}, \texttt{<trix-toolbar>}) registriert. Beim Verwenden eines Trix Editors wird dementsprechend der Controller und in diesem alle weiteren wichtigen Klassen instanziiert, die nicht unbedingt in der Darstellung ersichtlich ist. 
-
-\paragraph{EditorController}\mbox{}\\
-Dieser Controller ist einer der Klassen, die mehr Funktionalitäten beinhalten. Er kümmert sich um 
-
-\begin{itemize}
-	\item \texttt{InputEvents} bei jeder Tastatureingabe im Editor. Hier wird beispielsweise darauf geachtet, dass beim Einfügen eines Textes dessen Formatierung weiterhin bestehen bleibt.
-	\item Formatierungen bei Bedarf und das Aktivieren und Deaktivieren dieser, was aufgrund der Kommunikation zwischen den Controllern auch über die Toolbar möglich ist.
-	\item das Rendern, was bei jeder Änderung geschieht.
-\end{itemize}
-
-\paragraph{ToolbarController}\mbox{}\\
-Wie auch im Absatz davor erwähnt, kümmert sich dieser Controller um das Aktivieren und Deaktivieren von Formatierungen über die Buttons in der Toolbar. Er hat einen eigenen \texttt{EventListener} auf sich selbst (\texttt{<trix-toolbar>}). Die Besonderheit darin ist, dass beliebig viele Buttons verwendet werden können. Der Grund dafür ist, dass das Event das sogenannte ``Bubbling`` verwendet. Dies kann man sich wortwörtlich wie eine Blase Unterwasser vorstellen. Wenn ein Element ein Event besitzt, wird dieses Event auch Elementen darunter (Child Elements) ausgelöst. Diese Blase steigt in der Struktur auf und löst das Event aus.\\
-Die Buttons haben erst dann eine Funktion, wenn ein selbst definiertes HTML-Attribute hinzugefügt wird. Sobald das Event ausgelöst wird, überprüft der Controller, ob das Attribut vorhanden ist. Wenn ja, handelt er anhand des Wertes und formatiert (kursiv) oder löst eine Funktion (rückgängig) aus.
-
-\paragraph{DocumentView}\mbox{}\\
-Diese View ist für das gesamte Rendering im Editor zuständig. Das beinhaltet alle Textformatierungen und Textpositionierungen, die auch dementsprechend eine eigene View besitzen, wie etwa TextView für Texte oder AttachmentView für Bilder und Dokumente. Bei jedem Renderaufruf wird das alte Dokument mit einem neuen ersetzt.
-
-\subsection{Systemarchitektur mit Erweiterung}
+\subsection{Erweiterte Systemarchitektur}
 
 \begin{figure}[H]
 \begin{center}
@@ -115,7 +116,7 @@ Diese View ist für das gesamte Rendering im Editor zuständig. Das beinhaltet a
 	\caption{Vereinfachte Darstellung der Kommunikation zwischen den Klassen mit der Erweiterung}
 \end{figure}
 
-Mit der geschriebenen Erweiterung ist es möglich, die Toolbar in wenigen Codezeilen robust und sicher zu ersetzen. Hierbei wird der gesamte Inhalt vom Toolbar Element überschrieben. Die Struktur bleibt dennoch gleich für Backwards Compatibility. Zusätzlich zu der neuen Anordnung- und Designmöglichkeit der Buttons werden ARIA-Rollen (Accessible Rich Internet Applications / WAI-ARIA, vgl. \cite{wai_aria_2017}) zugeordnet. Des Weiteren werden \texttt{KeyEvents} an \texttt{<trix-editor>} und \texttt{<trix-toolbar>} gehängt. Das Event für den Editor ist sehr simpel, denn er hört auf nur eine Tastenkombination, die es ermöglicht den Fokus auf die Toolbar zu legen. Bei der Toolbar reagiert das Event nur bei Tasten, wie
+Mit der Erweiterung ``Trix Extension`` ist es möglich, die Toolbar in wenigen Codezeilen robust und sicher zu ersetzen. Hierbei wird der gesamte Inhalt von dem Trix-Toolbar-Element überschrieben. Dieser bestand zuvor aus HTML-Elementen, die statisch in einer HTML-Datei definiert waren. Die Struktur bleibt dennoch gleich für Backwards Compatibility. Zusätzlich zu der neuen Anordnung- und Designmöglichkeit der Buttons werden ARIA-Rollen (Accessible Rich Internet Applications / WAI-ARIA, vgl. \cite{wai_aria_2017}) zugeordnet. Des Weiteren werden \texttt{KeyEvents} an \texttt{<trix-editor>} und \texttt{<trix-toolbar>} gehängt. Das Event für den Editor ist sehr simpel, denn er hört auf nur eine Tastenkombination, die es ermöglicht den Fokus auf die Toolbar zu legen. Bei der Toolbar reagiert das Event nur bei Tasten, wie
 
 \begin{itemize}
 	\item Pfeiltasten zum Navigieren zwischen den Buttons,
@@ -124,9 +125,6 @@ Mit der geschriebenen Erweiterung ist es möglich, die Toolbar in wenigen Codeze
 	\item Pos1- und Ende-Taste zum Navigieren zum jeweiligen ersten und letzten Button,
 	\item und Tab-Taste ignorieren, damit die Nutzer nicht verwirrt werden und die Orientierung verlieren.
 \end{itemize}
-
-\section{Sollzustand}
-% Erweiterung genauer beschreiben
 
 \subsection{Funktionale Anforderungen}
 Für diese Diplomarbeit sind keine funktionalen Anforderungen definiert. Der Grund ist der, dass die Autoren der Meinung sind, dass es keine neuen funktionalen Anforderungen gibt, weshalb die Arbeit schwerwiegend auf nichtfunktionalen Anforderungen basiert.
@@ -145,7 +143,10 @@ Für diese Diplomarbeit sind keine funktionalen Anforderungen definiert. Der Gru
 \section{Projektablauf und Produkt}
 \subsection{Projektablauf}
 Im ersten Schritt ist das GitHub Repository des Texteditors Trix geforkt worden, um die notwendigen Änderungen zur Erreichung der Barrierefreiheit einzupflegen. Allerdings sind die Entwickler, die auch die gleichzeitigen Betreuer des Editors sind, bezüglich der Issues und der Pull Requests, sehr inaktiv. Daraufhin wurde eine eigene Erweiterung geschrieben, die unabhängig vom Sourcecode von Trix ist. Das bedeutet nun, dass kein Pull Request erstellt werden musste und dennoch eine barrierefreie Bedienung möglich ist.\\
-Der nächste Schritt beinhaltet den korrekten Export der bestehenden formatierten Textinhalte in der Fabasoft Cloud. Damit keine zusätzlichen Zeilenumbrüche hinzugefügt und gewisse HTML Elemente unterstützt und nicht übersprungen werden, sind eine Reihe von Funktionalitäten in Trix selbst und mithilfe von JavaScript Prototypes überschrieben worden. Bei Bedarf können diese Überschreibungen ignoriert werden.
+Der nächste Schritt beinhaltet den korrekten Export der bestehenden formatierten Textinhalte in der Fabasoft Cloud. Damit keine zusätzlichen Zeilenumbrüche hinzugefügt und gewisse HTML Elemente unterstützt und nicht übersprungen werden, sind eine Reihe von Funktionalitäten in Trix selbst und mithilfe von JavaScript Prototypes überschrieben worden. Bei Bedarf können diese Überschreibungen ignoriert werden.\\
+Während der Entwicklungsphase dieser Diplomarbeit revidierte ein blinder Mitarbeiter regelmäßig die Funktionen des Texteditors. Zusätzlich zu den Verbesserungsvorschlägen teilte er in seinen Feedbacks mit, welche Kriterien des WCAG 2.1 gut umgesetzt wurden und welche noch erforderlich waren.
 
 \subsection{Produkt}
 Mithilfe der Erweiterung ist es möglich, den Texteditor über die Tastatur zu bedienen und somit visuelle Elemente, wie etwa Buttons, zum Formattieren des Textes zu erreichen. 
+
+\section{Erfüllte Kriterien des WCAG 2.1}

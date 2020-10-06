@@ -1,8 +1,9 @@
 \chapter{Ausgewählte Aspekte}
 \section{WCAG 2.1}
-Die Web Content Accessibility Guidelines 2.1 (WCAG 2.1, vgl. \cite{wcag_2_1_2018}) wurden im Dezember 2008 veröffentlicht und sind ein Standard, der weltweit verwendet wird, um Dienstleistungen im Web so barrierefrei wie möglich zu gestalten. Somit können auch Menschen mit Behinderungen, wie etwa Sehschwäche, Blindheit, Hörverlust, Taubheit, körperliche oder kognitive Einschränkung, Sprachbehinderung, Lichtempfindlichkeit, Lernbehinderung oder Kombinationen dieser, das World Wide Web auf elektronischen Geräten nutzen. Diese Richtlinien sind vom World Wide Web Consortium (W3C, vgl. \cite{w3c_1994}) am 5. Juni 2018 für Webanwendungen empfohlen worden.
+\label{wcag_2_1}
+Die Web Content Accessibility Guidelines 2.1 (WCAG 2.1, vgl. \cite{wcag_2_1_2018}) wurden im Dezember 2008 veröffentlicht und sind ein Standard, der weltweit verwendet wird, um Dienstleistungen im Web so barrierefrei wie möglich zu gestalten. Somit können auch Menschen mit Behinderungen, wie etwa Sehschwäche, Blindheit, Hörverlust, Taubheit, körperliche oder kognitive Einschränkung, Sprachbehinderung, Lichtempfindlichkeit, Lernbehinderung oder Kombinationen dieser, das World Wide Web nutzen. Diese Richtlinien sind vom World Wide Web Consortium (W3C, vgl. \cite{w3c_1994}) am 5. Juni 2018 für Webanwendungen empfohlen worden.
 
-Unter anderem werden die WCAG 2.1 von Webdesignern und -entwicklern, politischen Entscheidungsträgern, Käufern, Lehrern und Studierenden beziehungsweise Schülerinnen und Schülern genutzt. Damit ihre Bedürfnisse erfüllt werden, gibt es hierfür verschiedene Anleitungen, die die allgemeinen Prinzipien, allgemeine Richtlinien, prüfbare Erfolgskriterien sowie eine Vielzahl an Techniken. 
+Durch die Befolgung der Empfehlungen des W3C können Webdesigner und -entwickler, politische Entscheidungsträger, Käufer, Lehrer und Studenten beziehungsweise Schüler das WWW nahezu problemlos nutzen. Die WCAG 2.1 setzen sich aus allgemeinen Prinzipien, allgemeinen Richtlinien, prüfbaren Erfolgskriterien sowie einer Vielzahl an Techniken zusammen:
 
 \begin{itemize}
 	\item Es gibt vier \textbf{Prinzipien}, die die Grundlagen für die Web-Zugänglichkeit bilden: wahrnehmbar, bedienbar, verständlich und robust (englisch: perceivable, operable, understandable and robust).
@@ -14,10 +15,45 @@ Unter anderem werden die WCAG 2.1 von Webdesignern und -entwicklern, politischen
 Bei Erreichung der höchsten Ebene ist eine hundertprozentige Web-Zugänglichkeit jedoch nicht garantiert. Die WCAG 2.1 dienen ausschließlich als Anleitung, um das Web so barrierefrei wie möglich zu gestalten. Deshalb wird vom W3C empfohlen sich regelmäßig über den neuesten Stand zu informieren und sich mit anderen zu beraten. Folgende Bemerkung wurde vom W3C (2008, \cite{wcag_2_1_2018}) auf der Webseite veröffentlicht:\\
 ``[...] Authors are encouraged to consider the full range of techniques [...] as well as to seek relevant advice about current best practice to ensure that Web content is accessible, as far as possible, to this community. [...]``
 
+\section{Web Components}
+\label{web_comp}
+Web Components (vgl. \cite{moz_webcomp_2019}) sind ein Einheit von Web-Technologien, die dem Benutzer ermöglicht, selbstdefinierte HTML-Elemente zu erstellen und wiederzuverwenden. Diese sind mit ihrem CSS und JavaScript gekapselt und sind somit vollständig von anderem Code getrennt. Mit einigen JavaScript Frameworks wie etwa Angular war es zwar bereits möglich wiederverwendbare HTML-Elemente zu definieren, allerdings nutzt jedes der Frameworks einen anderen Standard. Das bedeutet also, dass der Code in anderen Projekten in den meisten Fällen nicht verwendbar ist. Genau dieses Problem wurde durch Web Components schließlich gelöst. Diese bestehen aus drei Haupttechnologien:
+
+\begin{itemize}
+	\item \textbf{Benutzerdefinierte Elemente (engl. Custom Elements):} Ein Satz von JavaScript APIs zur Definition von benutzerdefinierten Elementen.
+	\item \textbf{Schatten-DOM (engl. Shadow DOM):} Ein Satz von JavaScript APIs zum Hinzufügen eines DOM-Elementes mit gekapselten Shadow-DOM-Elementen, die für Debugger und Skripte nicht direkt sichtbar sind.
+	\item \textbf{HTML-Vorlagen (engl. HTML Templates):} Innerhalb der Elemente \texttt{<template>} und \texttt{<slot>} geschriebene Markup-Vorlagen, die auf der dargestellten Seite nicht abgebildet und als Grundlage für benutzerdefinierte Elemente wiederverwendbar sind.
+\end{itemize}
+
+%\subsection{Verwendung in Trix}
+%\paragraph{Custom Elements}\mbox{}\\
+%Die in Trix benutzerdefinierten HTML-Elemente \texttt{<trix-toolbar>} und \texttt{<trix-editor>} werden mit der Methode \texttt{document.registerElement(tag-name, options)} im DOM neu registriert. Diese Funktion ist allerdings veraltet (vgl. \cite{moz_regel_2019}) und wurde von\\ \texttt{CustomElementRegistry.define()} abgelöst.
+
+%\paragraph{Shadow DOM}\mbox{}\\
+%Während des Renderings wird ein \texttt{<div>} HTML-Element um das zu rendernde HTML-Element gewrappt.
+
+%\paragraph{HTML Templates}\mbox{}\\
+
 \section{DOM Manipulation}
 
 % Factory Pattern, Events, Delegate, Observer
-\section{Factory Pattern}
+\section{Factory Method Pattern}
+\subsection{Was sind Design Patterns?}
+Um das Factory Method Pattern zu verstehen, muss man zunächst einmal wissen, was ein Design Pattern (dt. Entwurfsmuster) ist. In der Softwareentwicklung treten beim Entwurf oftmals dieselben Probleme auf. Abhilfe hierfür schaffen Design Patterns, die eine allgemeine wiederholbare Lösung dieser Designprobleme sind, den Entwicklungsprozess beschleunigen und programmiersprachenunabhängig sind. Sie repräsentieren somit eine Idee, und keine spezielle Implementierung, durch deren Verwendung der Quellcode für Entwickler flexibler, wiederverwendbar und einfacher zu warten ist. Allerdings sind sie nicht in jedem Projekt zwingend erforderlich, da sie lediglich für die Problemlösung und nicht für die Projektentwicklung gedacht sind.
+
+\paragraph{Arten von Design Patterns}\mbox{}\\
+
+\begin{itemize}
+	\item \textbf{Creational Pattern (dt. Erzeugungsmuster):}
+	\item \textbf{Structural Pattern (dt. Strukturmuster):}
+	\item \textbf{Behavioral Pattern (dt. Verhaltensmuster):}
+\end{itemize}
+
+\subsection{Begriffserklärung und Verwendung}
+Das Factory Method Patten, auch bekannt als Factory Pattern oder Fabrikmethode, definiert ein Interface oder eine abstrakte Klasse zur Erstellung von Objekten. Die Objekterstellung wird hierbei von den Subklassen übernommen, die entscheiden welche Klasse instanziiert wird. 
+
+\subsection{Vorteile und Nachteile}
+
 
 \section{JavaScript Events \& EventListener}
 \paragraph{trix-initialize}\mbox{}\\
@@ -26,7 +62,7 @@ Beim Initialisieren der Toolbar wird auf das von Trix definierte Event \texttt{t
 
 \paragraph{mousedown}\mbox{}\\
 Das \texttt{mousedown} Event wird genau zu dem Zeitpunkt gefeuert, an dem sich der Mauszeiger auf einem Element befindet und dieses drückt.\\
-Damit ein Button in der Trix-Toolbar aktiv ist und sozusagen ``geklickt`` wird, hört dieser standardmäßig auf ein \texttt{mousedown} Event. In der Erweiterung von Trix wird dieses Event simuliert mit \texttt{EventTarget.dispatchEvent()} und somit sind die Buttons in der Toolbar auch über die Tastatur bedienbar, was vor allem bei Blinden oder bei Benutzern mit motorischen Beeinträchtigungen relevant ist.
+Damit ein Button in der Trix-Toolbar aktiv ist und sozusagen ``geklickt`` wird, hört dieser standardmäßig auf ein \texttt{mousedown} Event. In der Erweiterung von Trix wird dieses Event simuliert mit \texttt{EventTarget.dispatchEvent()} und somit sind die Buttons in der Toolbar auch über die Tastatur bedienbar, was vor allem bei Blinden oder bei Benutzern mit einer motorischen Behinderung relevant ist.
 
 \paragraph{keydown}\mbox{}\\
 Wenn eine beliebige Taste gedrückt ist, wird das \texttt{keydown} Event gefeuert und liefert einen Code, der aussagt, welche Tasten im Moment gedrückt werden.\\
@@ -34,19 +70,34 @@ Um den WYSIWYG Texteditor mittels einer Tastatur bedienen zu können, wurde dara
 \\Folgende Tasten und Tastenkombinationen gelten in der Toolbar und im Editor:
 
 \begin{table}[H]
-\begin{tabular}{lp{9cm}l}
-\hline
-Taste bzw. Tastenkombination & Beschreibung                                                                                                                                                               								\\ \hline
-\texttt{ALT + F10} & Befindet sich der Cursor im Editor, dann gelangt man mit dieser Tastenkombination in die Toolbar und der erste vorkommende Button wird fokussiert.                         	\\ \hline
-\texttt{→ oder ↓} & Der nächste bzw. rechte Button in der Toolbar wird fokussiert.                                                                                                            							\\ \hline
-\texttt{← oder ↑} & Der vorherige bzw. linke Button in der Toolbar wird fokussiert.                                                                                                           						 		\\ \hline
-\texttt{STRG + →/↓} & Der erste Button der nächsten bzw. rechten Gruppe wird fokussiert.                                                                                                         						\\ \hline
-\texttt{STRG + ←/↑} & Der erste Button der vorherigen bzw. linken Gruppe wird fokussiert.                                                                                                       						\\ \hline
-\texttt{ENTER oder LEERTASTE} & Der aktuell fokussierte Button wird geklickt.                                                                                                                              					\\ \hline
-\texttt{ESC} & Befindet sich der Fokus in der Toolbar und wird die Taste gedrückt, so wird wieder der Editor fokussiert und der Cursor befindet sich an der zuletzt verwendeten Position. 	\\ \hline
-\texttt{POS1} & Der erste in der Toolbar vorkommende Button wird fokussiert.                                                                                                               								\\ \hline
-\texttt{ENDE} & Der letzte in der Toolbar vorkommende Button wird fokussiert.                                                                                                              								\\ \hline
-\end{tabular}
+	\begin{center}
+	\begin{tabular}{l|p{9cm}l}
+		\hline
+		\cellcolor{Gray}\textcolor{White}{Taste bzw. Tastenkombination} & \cellcolor{Gray}\textcolor{White}{Beschreibung} \\
+		\hline
+		\texttt{ALT + F10} & Befindet sich der Cursor im Editor, dann gelangt man mit dieser Tastenkombination in die Toolbar
+		und der erste vorkommende Button wird fokussiert.\\
+		\hline
+		\texttt{→ oder ↓} & Der nächste bzw. rechte Button in der Toolbar wird fokussiert.\\
+		\hline
+		\texttt{← oder ↑} & Der vorherige bzw. linke Button in der Toolbar wird fokussiert.\\
+		\hline
+		\texttt{STRG + →/↓} & Der erste Button der nächsten bzw. rechten Gruppe wird fokussiert.\\
+		\hline
+		\texttt{STRG + ←/↑} & Der erste Button der vorherigen bzw. linken Gruppe wird fokussiert.\\
+		\hline
+		\texttt{ENTER oder LEERTASTE} & Der aktuell fokussierte Button wird geklickt.\\
+		\hline
+		\texttt{ESC} & Befindet sich der Fokus in der Toolbar und wird die Taste gedrückt, so wird wieder der Editor fokussiert
+		und der Cursor befindet sich an der zuletzt verwendeten Position.\\
+		\hline
+		\texttt{POS1} & Der erste in der Toolbar vorkommende Button wird fokussiert.\\
+		\hline
+		\texttt{ENDE} & Der letzte in der Toolbar vorkommende Button wird fokussiert.\\
+		\hline
+	\end{tabular}
+	\end{center}
+	\caption{Tastenkombinationen zur Verwendung der Toolbar mit einer Tastatur}
 \end{table}
 
 \paragraph{focusout}\mbox{}\\
