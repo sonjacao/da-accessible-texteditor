@@ -15,87 +15,91 @@ Durch die Befolgung der Empfehlungen des W3C können Webdesigner und -entwickler
 Bei Erreichung der höchsten Ebene ist eine hundertprozentige Web-Zugänglichkeit jedoch nicht garantiert. Die WCAG 2.1 dienen ausschließlich als Anleitung, um das Web so barrierefrei wie möglich zu gestalten. Deshalb wird vom W3C empfohlen sich regelmäßig über den neuesten Stand zu informieren und sich mit anderen zu beraten. Folgende Bemerkung wurde vom W3C (2008, \cite{wcag_2_1_2018}) auf der Webseite veröffentlicht:\\
 ``[...] Authors are encouraged to consider the full range of techniques [...] as well as to seek relevant advice about current best practice to ensure that Web content is accessible, as far as possible, to this community. [...]``
 
+\section{WAI-ARIA}
+Accessible Rich Internet Applications (WAI-ARIA) 1.1 (\cite{wai_aria_2017})
+
 \section{Web Components}
 \label{web_comp}
 Web Components (vgl. \cite{moz_webcomp_2019}) sind ein Einheit von Web-Technologien, die dem Benutzer ermöglicht, selbstdefinierte HTML-Elemente zu erstellen und wiederzuverwenden. Diese sind mit ihrem CSS und JavaScript gekapselt und sind somit vollständig von anderem Code getrennt. Mit einigen JavaScript Frameworks wie etwa Angular war es zwar bereits möglich wiederverwendbare HTML-Elemente zu definieren, allerdings nutzt jedes der Frameworks einen anderen Standard. Das bedeutet also, dass der Code in anderen Projekten in den meisten Fällen nicht verwendbar ist. Genau dieses Problem wurde durch Web Components schließlich gelöst. Diese bestehen aus drei Haupttechnologien:
 
 \begin{itemize}
 	\item \textbf{Benutzerdefinierte Elemente (engl. Custom Elements):} Ein Satz von JavaScript APIs zur Definition von benutzerdefinierten Elementen.
-	\item \textbf{Schatten-DOM (engl. Shadow DOM):} Ein Satz von JavaScript APIs zum Hinzufügen eines DOM-Elementes mit gekapselten Shadow-DOM-Elementen, die für Debugger und Skripte nicht direkt sichtbar sind.
-	\item \textbf{HTML-Vorlagen (engl. HTML Templates):} Innerhalb der Elemente \texttt{<template>} und \texttt{<slot>} geschriebene Markup-Vorlagen, die auf der dargestellten Seite nicht abgebildet und als Grundlage für benutzerdefinierte Elemente wiederverwendbar sind.
+	\item \textbf{Schatten-DOM (engl. Shadow DOM):} Ein Satz von JavaScript APIs zum Hinzufügen eines DOM-Elementes mit gekapselten Shadow-DOM-Elementen, welches separat vom Hauptdokument DOM gerendert wird. Dadurch ist es möglich jegliche Funktionalitäten isoliert zu definieren, sodass der Programmierer keine Rücksicht auf Kollisionen mit anderen Dokumenten nehmen muss.
+	\item \textbf{HTML-Vorlagen (engl. HTML Templates):} Markup-Vorlagen, die innerhalb der Elemente \texttt{<template>} und \texttt{<slot>} geschrieben werden, werden nicht auf der dargestellten Seite abgebildet. Diese sind dafür da, um sie mehrmals als Vorlage eines benutzerdefinierten Elements zu verwenden.
 \end{itemize}
-
-%\subsection{Verwendung in Trix}
-%\paragraph{Custom Elements}\mbox{}\\
-%Die in Trix benutzerdefinierten HTML-Elemente \texttt{<trix-toolbar>} und \texttt{<trix-editor>} werden mit der Methode \texttt{document.registerElement(tag-name, options)} im DOM neu registriert. Diese Funktion ist allerdings veraltet (vgl. \cite{moz_regel_2019}) und wurde von\\ \texttt{CustomElementRegistry.define()} abgelöst.
-
-%\paragraph{Shadow DOM}\mbox{}\\
-%Während des Renderings wird ein \texttt{<div>} HTML-Element um das zu rendernde HTML-Element gewrappt.
-
-%\paragraph{HTML Templates}\mbox{}\\
-
-\section{DOM Manipulation}
 
 % Factory Pattern, Events, Delegate, Observer
 \section{Factory Method Pattern}
 \subsection{Was sind Design Patterns?}
-Um das Factory Method Pattern zu verstehen, muss man zunächst einmal wissen, was ein Design Pattern (dt. Entwurfsmuster) ist. In der Softwareentwicklung treten beim Entwurf oftmals dieselben Probleme auf. Abhilfe hierfür schaffen Design Patterns, die eine allgemeine wiederholbare Lösung dieser Designprobleme sind, den Entwicklungsprozess beschleunigen und programmiersprachenunabhängig sind. Sie repräsentieren somit eine Idee, und keine spezielle Implementierung, durch deren Verwendung der Quellcode für Entwickler flexibler, wiederverwendbar und einfacher zu warten ist. Allerdings sind sie nicht in jedem Projekt zwingend erforderlich, da sie lediglich für die Problemlösung und nicht für die Projektentwicklung gedacht sind.
+Um das Factory Method Pattern zu verstehen, muss man zunächst einmal wissen, was ein Design Pattern (dt. Entwurfsmuster, vgl. \cite{design_pattern_2020}) ist. In der Softwareentwicklung treten beim Entwurf oftmals dieselben Probleme auf. Abhilfe hierfür schaffen Design Patterns, die eine allgemeine wiederholbare Lösung dieser Designprobleme sind, den Entwicklungsprozess beschleunigen und programmiersprachenunabhängig sind. Sie repräsentieren somit eine Idee, und keine spezielle Implementierung, durch deren Verwendung der Quellcode flexibler, wiederverwendbar und einfacher für die Entwickler zu warten ist. Allerdings sind sie nicht in jedem Projekt zwingend erforderlich, da sie lediglich für die Problemlösung und nicht für die Projektentwicklung gedacht sind.
 
 \paragraph{Arten von Design Patterns}\mbox{}\\
 
 \begin{itemize}
-	\item \textbf{Creational Pattern (dt. Erzeugungsmuster):}
-	\item \textbf{Structural Pattern (dt. Strukturmuster):}
-	\item \textbf{Behavioral Pattern (dt. Verhaltensmuster):}
+	\item \textbf{Creational Pattern (dt. Erzeugungsmuster):} Sie dienen dazu Objekte zu erzeugen. Dieser Prozess wird gekapselt und ausgelagert, sodass die Objekterzeugung von der Implementierung des Objektes klar getrennt wird.
+	\item \textbf{Structural Pattern (dt. Strukturmuster):} Sie stellen vorgefertigte Vorlagen für die Beziehungen zwischen den Klassen zur Verfügung und erleichtern somit den Softwareentwurf.
+	\item \textbf{Behavioral Pattern (dt. Verhaltensmuster):} Sie führen dazu, dass die Software flexibler wird, indem das komplexe Verhalten dieser Software modelliert wird.
 \end{itemize}
 
 \subsection{Begriffserklärung und Verwendung}
-Das Factory Method Patten, auch bekannt als Factory Pattern oder Fabrikmethode, definiert ein Interface oder eine abstrakte Klasse zur Erstellung von Objekten. Die Objekterstellung wird hierbei von den Subklassen übernommen, die entscheiden welche Klasse instanziiert wird. 
+Das Factory Method Patten (vgl. \cite{factory_method_2020}), auch bekannt als Factory Pattern oder Fabrikmethode, definiert ein Interface oder eine abstrakte Klasse zur Erstellung von Objekten. Die Objekterstellung wird hierbei von den Subklassen übernommen, die entscheiden welche Klasse instanziiert wird.
 
 \subsection{Vorteile und Nachteile}
+\paragraph{Vorteile}
 
+\begin{itemize}
+	\item Mit Hilfe des Factory Method Patterns können Unterklassen die Art, wie Objekte erstellt werden sollen, selbst wählen.
+	\item Dieses Design Pattern fördert die lose Kopplung. Das heißt im Allgemeinen, dass anwendungsspezifische Klassen 			nicht mehr in den Code eingebunden werden müssen. 
+	\item Die Kommunikation erfolgt ausschließlich über die Schnittstelle oder die abstrakte Klasse, so dass der Code mit allen 		Klassen funktioniert, die entweder die Schnittstelle implementieren oder die abstrakte Klasse erweitern.
+\end{itemize}
+
+\paragraph{Nachteile}
+
+\begin{itemize}
+	\item Falls die verwendeten Klassen nicht abstrakt sind, muss für jede individuelle Klasse eine Factory geschrieben werden. % TODO: Nachteile
+\end{itemize}
 
 \section{JavaScript Events \& EventListener}
 \paragraph{trix-initialize}\mbox{}\\
-Sobald das Trix-Editor Element im DOM eingefügt wird und sein Editor-Objekt zur Benutzung bereit ist, wird das Event \texttt{trix-initialize} gefeuert.\\
-Beim Initialisieren der Toolbar wird auf das von Trix definierte Event \texttt{trix-initialize} gehört. Damit aber nicht die Standard Toolbar sondern die erweiterte Toolbar, die diese ersetzen soll, angezeigt wird, hört bei der Trix-Extension ebenso ein \texttt{EventListener} zu. Sobald das Event gefeuert wird, werden die standardmäßigen Button-Gruppen und Buttons mit denen aus der eigens erstellten Toolbar ersetzt und können mit Screenreadern und Tastaturen barrierefrei bedient werden.
+Sobald der \texttt{<trix-editor>} im DOM registriert wird und sein internes \texttt{Editor}-Objekt zur Benutzung bereit ist, wird das Event \texttt{trix-initialize} gefeuert.\\
+Damit nicht die standardmäßig definierte Toolbar, sondern die erweiterte barrierefreie Toolbar, die diese ersetzen soll, angezeigt wird, ist es möglich auf dieses Event zu hören und dementsprechend darauf zu reagieren. Somit kann mit der Trix-Extension die Toolbar ersetzt werden, ohne dass der Endbenutzer etwas von diesem DOM-Manipulationsprozess mitbekommt. % TODO: Formatierung
 
 \paragraph{mousedown}\mbox{}\\
-Das \texttt{mousedown} Event wird genau zu dem Zeitpunkt gefeuert, an dem sich der Mauszeiger auf einem Element befindet und dieses drückt.\\
-Damit ein Button in der Trix-Toolbar aktiv ist und sozusagen ``geklickt`` wird, hört dieser standardmäßig auf ein \texttt{mousedown} Event. In der Erweiterung von Trix wird dieses Event simuliert mit \texttt{EventTarget.dispatchEvent()} und somit sind die Buttons in der Toolbar auch über die Tastatur bedienbar, was vor allem bei Blinden oder bei Benutzern mit einer motorischen Behinderung relevant ist.
+Das \texttt{mousedown} Event wird genau zu dem Zeitpunkt gefeuert, an dem sich der Mauszeiger auf einem HTML-Element befindet und dieses drückt.\\
+Damit ein HTML-Button in der \texttt{<trix-toolbar>} aktiv ist und geklickt werden kann, hört dieser standardmäßig auf ein \texttt{mousedown} Event. Um diese Buttons mit einer Tastatur bedienen zu können, müsste der Trix-Editor im Quellcode auf Tastatureingaben reagieren und diese dementsprechend erneut validieren. In der Erweiterung Trix-Extension wird dieses Event künstlich ausgelöst mit \texttt{EventTarget.dispatchEvent()} und somit sind die Buttons in der Toolbar auch über die Tastatur bedienbar, ohne dass der Quellcode mit Wiederholung der Validation ergänzt werden muss.
 
 \paragraph{keydown}\mbox{}\\
-Wenn eine beliebige Taste gedrückt ist, wird das \texttt{keydown} Event gefeuert und liefert einen Code, der aussagt, welche Tasten im Moment gedrückt werden.\\
-Um den WYSIWYG Texteditor mittels einer Tastatur bedienen zu können, wurde darauf gewartet bis das \texttt{keydown} Event gefeuert wurde. Je nachdem, welche Taste gedrückt wird, wird entweder der nächste oder der vorherige Button oder die Button-Gruppe fokussiert, geklickt oder der Cursor zur weiteren Texteingabe und Textformatierung in den Editor gesetzt.\\
+Wenn eine beliebige Taste gedrückt ist, wird das \texttt{keydown} Event gefeuert und liefert einen Code, der aussagt, welche Taste im Moment gedrückt wird.\\
+Um den WYSIWYG Texteditor mittels einer Tastatur bedienen zu können, wird auf das \texttt{keydown} Event gelauscht. Je nachdem, welche Taste gedrückt wird, wird entweder der nächste oder der vorherige Button oder die Button-Gruppe fokussiert, geklickt oder der Fokus zur weiteren Texteingabe in den Editor gesetzt.\\
 \\Folgende Tasten und Tastenkombinationen gelten in der Toolbar und im Editor:
 
 \begin{table}[H]
 	\begin{center}
-	\begin{tabular}{l|p{9cm}l}
+	\begin{tabularx}{\textwidth}{| p{2.5cm} | l | X |}
 		\hline
-		\cellcolor{Gray}\textcolor{White}{Taste bzw. Tastenkombination} & \cellcolor{Gray}\textcolor{White}{Beschreibung} \\
+		\cellcolor{Gray}\textcolor{White}{Tasten} & \cellcolor{Gray}\textcolor{White}{Fokusbereich} & \cellcolor{Gray}\textcolor{White}{Beschreibung} \\
 		\hline
-		\texttt{ALT + F10} & Befindet sich der Cursor im Editor, dann gelangt man mit dieser Tastenkombination in die Toolbar
+		\texttt{ALT + F10} & \texttt{<trix-editor>} & Befindet sich der Fokus im Editor, dann gelangt man mit dieser Tastenkombination in die Toolbar
 		und der erste vorkommende Button wird fokussiert.\\
 		\hline
-		\texttt{→ oder ↓} & Der nächste bzw. rechte Button in der Toolbar wird fokussiert.\\
+		\texttt{→ oder ↓} & \texttt{} & Der nächste bzw. rechte Button in der Toolbar wird fokussiert.\\
 		\hline
-		\texttt{← oder ↑} & Der vorherige bzw. linke Button in der Toolbar wird fokussiert.\\
+		\texttt{← oder ↑} & \texttt{} & Der vorherige bzw. linke Button in der Toolbar wird fokussiert.\\
 		\hline
-		\texttt{STRG + →/↓} & Der erste Button der nächsten bzw. rechten Gruppe wird fokussiert.\\
+		\texttt{STRG + →/↓} & \texttt{} & Der erste Button der nächsten bzw. rechten Gruppe wird fokussiert.\\
 		\hline
-		\texttt{STRG + ←/↑} & Der erste Button der vorherigen bzw. linken Gruppe wird fokussiert.\\
+		\texttt{STRG + ←/↑} & \texttt{} & Der erste Button der vorherigen bzw. linken Gruppe wird fokussiert.\\
 		\hline
-		\texttt{ENTER oder LEERTASTE} & Der aktuell fokussierte Button wird geklickt.\\
+		\texttt{ENTER oder LEERTASTE} & \texttt{} & Der aktuell fokussierte Button wird geklickt.\\
 		\hline
-		\texttt{ESC} & Befindet sich der Fokus in der Toolbar und wird die Taste gedrückt, so wird wieder der Editor fokussiert
+		\texttt{ESC} & \texttt{} & Befindet sich der Fokus in der Toolbar und wird die Taste gedrückt, so wird wieder der Editor fokussiert
 		und der Cursor befindet sich an der zuletzt verwendeten Position.\\
 		\hline
-		\texttt{POS1} & Der erste in der Toolbar vorkommende Button wird fokussiert.\\
+		\texttt{POS1} & \texttt{} & Der erste in der Toolbar vorkommende Button wird fokussiert.\\
 		\hline
-		\texttt{ENDE} & Der letzte in der Toolbar vorkommende Button wird fokussiert.\\
+		\texttt{ENDE} & \texttt{} & Der letzte in der Toolbar vorkommende Button wird fokussiert.\\
 		\hline
-	\end{tabular}
+	\end{tabularx}
 	\end{center}
 	\caption{Tastenkombinationen zur Verwendung der Toolbar mit einer Tastatur}
 \end{table}

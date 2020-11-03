@@ -100,10 +100,10 @@ Das Web-Zugänglichkeits-Gesetz (WZG, vlg. \cite{ris_wzg_2020}) umfasst alle rec
 \mbox{}\\Damit diese Dienstleistungen fortlaufend zugänglich sind, müssen die oben genannten Anforderungen regelmäßig überprüft werden. Grundsätzlich hat jede Nutzerin und jeder Nutzer das Recht dazu, sich über Mängel bei Nichteinhaltung der Barrierefreiheit zu beschweren, die dann, wenn sie berechtigt sind, beseitigt werden müssen. 
 
 \section{Aufgabenstellung}
-Im Rahmen dieser Diplomarbeit wurde eine Erweiterung für den Texteditor {\em{Trix}} geschrieben, sodass dieser den Ansprüchen für die Produkte der Fa. Fabasoft gerecht wird. Er sollte weitestgehend von allen Personen einfach und ohne Probleme bedient werden können. Insbesondere wurden die Kriterien des WCAG 2.1 (Web Content Accessibility Guidelines~\ref{wcag_2_1}) erfüllt sowie eine Bedienung mit Screenreadern und vollständig mit Tastatur ermöglicht worden.
+Im Rahmen dieser Diplomarbeit wurde eine Erweiterung für den Texteditor {\em{Trix}} geschrieben, sodass dieser den Ansprüchen für die Produkte der Fa. Fabasoft gerecht wird.  Insbesondere wurden die Kriterien des WCAG 2.1 (Web Content Accessibility Guidelines~\ref{wcag_2_1}) erfüllt sowie eine Bedienung mit Screenreadern und vollständig mit Tastatur ermöglicht worden.
 
 \section{Zielsetzung}
-Ziel dieser Arbeit war es, den Mitarbeiten und Kunden von der Fa. Fabasoft die Verwendung des Systems weiterhin zu ermöglichen und die notwendigen Kriterien des WCAG 2.1 zu erfüllen.
+Ziel dieser Arbeit war es, den Mitarbeiten und Kunden von der Fa. Fabasoft die Verwendung des Systems weiterhin zu ermöglichen. Der Texteditor sollte weitestgehend von allen Personen einfach und ohne Probleme bedient werden können.
 
 \section{Sollzustand}
 
@@ -116,12 +116,12 @@ Ziel dieser Arbeit war es, den Mitarbeiten und Kunden von der Fa. Fabasoft die V
 	\caption{Vereinfachte Darstellung der Kommunikation zwischen den Klassen mit der Erweiterung}
 \end{figure}
 
-Mit der Erweiterung ``Trix Extension`` ist es möglich, die Toolbar in wenigen Codezeilen robust und sicher zu ersetzen. Hierbei wird der gesamte Inhalt von dem Trix-Toolbar-Element überschrieben. Dieser bestand zuvor aus HTML-Elementen, die statisch in einer HTML-Datei definiert waren. Die Struktur bleibt dennoch gleich für Backwards Compatibility. Zusätzlich zu der neuen Anordnung- und Designmöglichkeit der Buttons werden ARIA-Rollen (Accessible Rich Internet Applications / WAI-ARIA, vgl. \cite{wai_aria_2017}) zugeordnet. Des Weiteren werden \texttt{KeyEvents} an \texttt{<trix-editor>} und \texttt{<trix-toolbar>} gehängt. Das Event für den Editor ist sehr simpel, denn er hört auf nur eine Tastenkombination, die es ermöglicht den Fokus auf die Toolbar zu legen. Bei der Toolbar reagiert das Event nur bei Tasten, wie
+Mit der Erweiterung ``Trix Extension`` ist es möglich, die Toolbar in wenigen Codezeilen robust und sicher zu ersetzen. Hierbei wird der gesamte Inhalt von dem \texttt{<trix-toolbar>} überschrieben. Die Toolbar bestand zuvor aus HTML-Elementen, die statisch in einer JavaScript-Datei definiert waren. Die Struktur der neu ersetzten Toolbar bleibt dennoch dieselbe für Backwards Compatibility. Zusätzlich zu der neuen Anordnung- und Designmöglichkeit der Buttons werden ARIA-Rollen (Accessible Rich Internet Applications / WAI-ARIA, vgl. \cite{wai_aria_2017}) zugeordnet. Des Weiteren werden \texttt{KeyEvents} an \texttt{<trix-editor>} und \texttt{<trix-toolbar>} gehängt. Das Event für den Editor ist sehr simpel, denn er hört auf nur eine Tastenkombination, die es ermöglicht den Fokus auf die Toolbar zu legen. Bei der Toolbar reagiert das Event nur bei Tasten, wie
 
 \begin{itemize}
 	\item Pfeiltasten zum Navigieren zwischen den Buttons,
-	\item Pfeiltasten mit Steuerung-Taste zum Navigieren zwischen den Gruppen,
-	\item Escape-Taste zum Verlassen der Toolbar und Fokussieren des Editors,
+	\item Pfeiltasten mit Steuerung-Taste zum Navigieren zwischen den Button-Gruppen,
+	\item Escape-Taste zum Verlassen der Toolbar und zurück Fokussieren des Editors,
 	\item Pos1- und Ende-Taste zum Navigieren zum jeweiligen ersten und letzten Button,
 	\item und Tab-Taste ignorieren, damit die Nutzer nicht verwirrt werden und die Orientierung verlieren.
 \end{itemize}
@@ -137,14 +137,15 @@ Für diese Diplomarbeit sind keine funktionalen Anforderungen definiert. Der Gru
 	\item Einpflegen der entsprechenden Änderungen zur Erfüllung der Kriterien des WCAG 2.1.
 	\item Vollständige Bedienung über eine Tastatur und einen Screenreader.
 	\item Einpflegen eines High-Level-APIs, um die Instanzierung und Parametrierung aus dem Fabasoft UI möglichst simpel zu gestalten.
-	\item Schlussendliche Integration in die Softwareprodukte der Fa. Fabasoft.
 \end{itemize}
 
 \section{Projektablauf und Produkt}
 \subsection{Projektablauf}
-Im ersten Schritt ist das GitHub Repository des Texteditors Trix geforkt worden, um die notwendigen Änderungen zur Erreichung der Barrierefreiheit einzupflegen. Allerdings sind die Entwickler, die auch die gleichzeitigen Betreuer des Editors sind, bezüglich der Issues und der Pull Requests, sehr inaktiv. Daraufhin wurde eine eigene Erweiterung geschrieben, die unabhängig vom Sourcecode von Trix ist. Das bedeutet nun, dass kein Pull Request erstellt werden musste und dennoch eine barrierefreie Bedienung möglich ist.\\
-Der nächste Schritt beinhaltet den korrekten Export der bestehenden formatierten Textinhalte in der Fabasoft Cloud. Damit keine zusätzlichen Zeilenumbrüche hinzugefügt und gewisse HTML Elemente unterstützt und nicht übersprungen werden, sind eine Reihe von Funktionalitäten in Trix selbst und mithilfe von JavaScript Prototypes überschrieben worden. Bei Bedarf können diese Überschreibungen ignoriert werden.\\
-Während der Entwicklungsphase dieser Diplomarbeit revidierte ein blinder Mitarbeiter regelmäßig die Funktionen des Texteditors. Zusätzlich zu den Verbesserungsvorschlägen teilte er in seinen Feedbacks mit, welche Kriterien des WCAG 2.1 gut umgesetzt wurden und welche noch erforderlich waren.
+Im ersten Schritt ist das GitHub Repository des Texteditors Trix geforkt worden, um die notwendigen Änderungen zur Erreichung der Barrierefreiheit einzupflegen. Allerdings sind die Entwickler, die auch die gleichzeitigen Betreuer des Editors sind, bezüglich der Issues und der Pull Requests, sehr inaktiv. Daraufhin wurde mit dem Team der Fabasoft Cloud entschieden, dass eine Erweiterung für den Texteditor sinnvoller ist.
+
+\mbox{}\\Im nächsten Schritt wurde der korrekte Export der bestehenden formatierten Textinhalte in der Fabasoft Cloud ermöglicht. Damit keine zusätzlichen Zeilenumbrüche hinzugefügt und gewisse HTML Elemente unterstützt und nicht übersprungen werden, sind eine Reihe von Funktionalitäten in Trix selbst und mit Hilfe von JavaScript Prototypes überschrieben worden. Bei Bedarf können diese Überschreibungen ignoriert werden.
+
+\mbox{}\\Während der Entwicklungsphase dieser Diplomarbeit revidierte ein blinder Mitarbeiter regelmäßig die Funktionen des Texteditors. Zusätzlich zu den Verbesserungsvorschlägen teilte er in seinen Feedbacks mit, welche Kriterien des WCAG 2.1 gut umgesetzt wurden und welche noch erforderlich waren.
 
 \subsection{Produkt}
 Mithilfe der Erweiterung ist es möglich, den Texteditor über die Tastatur zu bedienen und somit visuelle Elemente, wie etwa Buttons, zum Formattieren des Textes zu erreichen. 
