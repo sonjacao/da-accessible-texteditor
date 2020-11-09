@@ -82,22 +82,22 @@ Um den WYSIWYG Texteditor mittels einer Tastatur bedienen zu können, wird auf d
 		\texttt{ALT + F10} & \texttt{<trix-editor>} & Befindet sich der Fokus im Editor, dann gelangt man mit dieser Tastenkombination in die Toolbar
 		und der erste vorkommende Button wird fokussiert.\\
 		\hline
-		\texttt{→ oder ↓} & \texttt{} & Der nächste bzw. rechte Button in der Toolbar wird fokussiert.\\
+		\texttt{→ oder ↓} & \texttt{<trix-toolbar>} & Der nächste bzw. rechte Button in der Toolbar wird fokussiert.\\
 		\hline
-		\texttt{← oder ↑} & \texttt{} & Der vorherige bzw. linke Button in der Toolbar wird fokussiert.\\
+		\texttt{← oder ↑} & \texttt{<trix-toolbar>} & Der vorherige bzw. linke Button in der Toolbar wird fokussiert.\\
 		\hline
-		\texttt{STRG + →/↓} & \texttt{} & Der erste Button der nächsten bzw. rechten Gruppe wird fokussiert.\\
+		\texttt{STRG + →/↓} & \texttt{<trix-toolbar>} & Der erste Button der nächsten bzw. rechten Gruppe wird fokussiert.\\
 		\hline
-		\texttt{STRG + ←/↑} & \texttt{} & Der erste Button der vorherigen bzw. linken Gruppe wird fokussiert.\\
+		\texttt{STRG + ←/↑} & \texttt{<trix-toolbar>} & Der erste Button der vorherigen bzw. linken Gruppe wird fokussiert.\\
 		\hline
-		\texttt{ENTER oder LEERTASTE} & \texttt{} & Der aktuell fokussierte Button wird geklickt.\\
+		\texttt{ENTER oder LEERTASTE} & \texttt{<trix-toolbar>} & Der aktuell fokussierte Button wird geklickt.\\
 		\hline
-		\texttt{ESC} & \texttt{} & Befindet sich der Fokus in der Toolbar und wird die Taste gedrückt, so wird wieder der Editor fokussiert
+		\texttt{ESC} & \texttt{<trix-toolbar>} & Befindet sich der Fokus in der Toolbar und wird die Taste gedrückt, so wird wieder der Editor fokussiert
 		und der Cursor befindet sich an der zuletzt verwendeten Position.\\
 		\hline
-		\texttt{POS1} & \texttt{} & Der erste in der Toolbar vorkommende Button wird fokussiert.\\
+		\texttt{POS1} & \texttt{<trix-toolbar>} & Der erste in der Toolbar vorkommende Button wird fokussiert.\\
 		\hline
-		\texttt{ENDE} & \texttt{} & Der letzte in der Toolbar vorkommende Button wird fokussiert.\\
+		\texttt{ENDE} & \texttt{<trix-toolbar>} & Der letzte in der Toolbar vorkommende Button wird fokussiert.\\
 		\hline
 	\end{tabularx}
 	\end{center}
@@ -105,8 +105,8 @@ Um den WYSIWYG Texteditor mittels einer Tastatur bedienen zu können, wird auf d
 \end{table}
 
 \paragraph{focusout}\mbox{}\\
-Sobald ein Element im Begriff dabei ist den Fokus zu verlieren, wird das \texttt{focusout} Event gefeuert.\\
-Das Dropdown Menü jedes \texttt{DropdownButtons}~\ref{dropdown_button} erhält beim Initialisieren das Attribut \texttt{hidden}, damit es zu Beginn für den Benutzer nicht sichtbar ist. Sobald der Button geklickt wird, wird auch das Menü sichtbar und der Fokus auf den ersten Button gelegt. Wenn das Menü allerdings nicht mehr fokussiert ist, reagiert der \texttt{EventListener} auf das Event \texttt{focusout} und das Dropdown Menü erhält erneut das Attribut \texttt{hidden} und wird versteckt.
+Sobald ein HTML-Element im Begriff dabei ist den Fokus zu verlieren, wird das \texttt{focusout} Event gefeuert.\\
+Beim Initialisieren wird für jeden HTML-Button, der ein \texttt{DropdownButton}~\ref{dropdown_button} ist,  ein Dropdown Menü erstellt. Dieses Menü besteht aus einem HTML  \texttt{<div>} Element, in dem sich weitere HTML-Buttons befinden. Damit es für den Benutzer zu Beginn noch nicht sichtbar ist, erhält es das Attribut \texttt{hidden}. Sobald der \texttt{DropdownButton} geklickt wird, wird auch das Menü sichtbar und der Fokus auf den ersten Button darin gelegt. Wenn das Menü allerdings nicht mehr fokussiert ist, also das Event \texttt{focusout} gefeuert wird, erhält das Dropdown Menü erneut das Attribut \texttt{hidden} und wird somit für den Benutzer nicht mehr sichtbar sein.
 
 \section{MutationObserver}
 Der \texttt{MutationObserver} ist ein Interface, der Veränderungen in der Baumstruktur des DOMs beobachtet und wurde konzipiert, um die Mutation Events aus der DOM3 Events Spezifikation abzulösen.\\
