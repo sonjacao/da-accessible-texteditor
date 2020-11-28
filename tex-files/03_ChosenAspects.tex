@@ -15,17 +15,14 @@ Durch die Befolgung der Empfehlungen des W3C können Webdesigner und -entwickler
 Bei Erreichung der höchsten Ebene ist eine hundertprozentige Web-Zugänglichkeit jedoch nicht garantiert. Die WCAG 2.1 dienen ausschließlich als Anleitung, um das Web so barrierefrei wie möglich zu gestalten. Deshalb wird vom W3C empfohlen sich regelmäßig über den neuesten Stand zu informieren und sich mit anderen zu beraten. Folgende Bemerkung wurde vom W3C (2008, \cite{wcag_2_1_2018}) auf der Webseite veröffentlicht:\\
 ``[...] Authors are encouraged to consider the full range of techniques [...] as well as to seek relevant advice about current best practice to ensure that Web content is accessible, as far as possible, to this community. [...]``
 
-\section{WAI-ARIA}
-Accessible Rich Internet Applications (WAI-ARIA) 1.1 (\cite{wai_aria_2017})
-
 \section{Web Components}
 \label{web_comp}
-Web Components (vgl. \cite{moz_webcomp_2019}) sind ein Einheit von Web-Technologien, die dem Benutzer ermöglicht, selbstdefinierte HTML-Elemente zu erstellen und wiederzuverwenden. Diese sind mit ihrem CSS und JavaScript gekapselt und sind somit vollständig von anderem Code getrennt. Mit einigen JavaScript Frameworks wie etwa Angular war es zwar bereits möglich wiederverwendbare HTML-Elemente zu definieren, allerdings nutzt jedes der Frameworks einen anderen Standard. Das bedeutet also, dass der Code in anderen Projekten in den meisten Fällen nicht verwendbar ist. Genau dieses Problem wurde durch Web Components schließlich gelöst. Diese bestehen aus drei Haupttechnologien:
+Web Components (vgl. \cite{moz_webcomp_2019}) sind eine Web-Technologie, die es den Entwicklern ermöglicht, selbstdefinierte HTML-Elemente zu erstellen und wiederzuverwenden. Diese sind mit ihrem CSS und JavaScript gekapselt und sind somit vollständig von anderem Code getrennt. Mit einigen JavaScript Frameworks wie etwa Angular war es zwar bereits möglich wiederverwendbare HTML-Elemente zu definieren, allerdings nutzt jedes der Frameworks einen anderen Standard. Dies bedeutet, dass der Code in anderen Projekten in den meisten Fällen nicht verwendbar ist. Genau dieses Problem wurde durch Web Components gelöst. Die Web Components bestehen aus drei Hauptbestandteilen:
 
 \begin{itemize}
-	\item \textbf{Benutzerdefinierte Elemente (engl. Custom Elements):} Ein Satz von JavaScript APIs zur Definition von benutzerdefinierten Elementen.
-	\item \textbf{Schatten-DOM (engl. Shadow DOM):} Ein Satz von JavaScript APIs zum Hinzufügen eines DOM-Elementes mit gekapselten Shadow-DOM-Elementen, welches separat vom Hauptdokument DOM gerendert wird. Dadurch ist es möglich jegliche Funktionalitäten isoliert zu definieren, sodass der Programmierer keine Rücksicht auf Kollisionen mit anderen Dokumenten nehmen muss.
-	\item \textbf{HTML-Vorlagen (engl. HTML Templates):} Markup-Vorlagen, die innerhalb der Elemente \texttt{<template>} und \texttt{<slot>} geschrieben werden, werden nicht auf der dargestellten Seite abgebildet. Diese sind dafür da, um sie mehrmals als Vorlage eines benutzerdefinierten Elements zu verwenden.
+	\item \textbf{Customs ELements:} Ein Satz von JavaScript APIs zur Definition von benutzerdefinierten Elementen.
+	\item \textbf{Shadow DOM:} Ein Satz von JavaScript APIs zum Hinzufügen eines DOM-Elementes mit gekapselten Shadow-DOM-Elementen, welches separat vom Hauptdokument DOM gerendert wird. Dadurch ist es möglich jegliche Funktionalitäten isoliert zu definieren, sodass der Programmierer keine Rücksicht auf Kollisionen mit anderen Dokumenten nehmen muss.
+	\item \textbf{HTML Templates:} Markup-Vorlagen, die innerhalb der Elemente \texttt{<template>} und \texttt{<slot>} geschrieben werden, werden nicht auf der dargestellten Seite abgebildet. Diese sind dafür da, um sie mehrmals als Vorlage eines benutzerdefinierten Elements zu verwenden.
 \end{itemize}
 
 % Factory Pattern, Events, Delegate, Observer
@@ -44,6 +41,13 @@ Um das Factory Method Pattern zu verstehen, muss man zunächst einmal wissen, wa
 \subsection{Begriffserklärung und Verwendung}
 Das Factory Method Patten (vgl. \cite{factory_method_2020}), auch bekannt als Factory Pattern oder Fabrikmethode, definiert ein Interface oder eine abstrakte Klasse zur Erstellung von Objekten. Die Objekterstellung wird hierbei von den Subklassen übernommen, die entscheiden welche Klasse instanziiert wird.
 
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=.7]{images/cld_factory_pattern.png}
+\end{center}
+	\caption{Veranschaulichung des Factory Method Patterns in einem Klassendiagramm}
+\end{figure}
+
 \subsection{Vorteile und Nachteile}
 \paragraph{Vorteile}
 
@@ -56,7 +60,7 @@ Das Factory Method Patten (vgl. \cite{factory_method_2020}), auch bekannt als Fa
 \paragraph{Nachteile}
 
 \begin{itemize}
-	\item Falls die verwendeten Klassen nicht abstrakt sind, muss für jede individuelle Klasse eine Factory geschrieben werden. % TODO: Nachteile
+	\item Falls die verwendeten Klassen nicht abstrakt sind, muss für jede individuelle Klasse eine Factory geschrieben werden.
 \end{itemize}
 
 \section{JavaScript Events \& EventListener}
