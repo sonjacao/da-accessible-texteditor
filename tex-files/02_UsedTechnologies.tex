@@ -41,7 +41,42 @@ Oftmals arbeitet ein Entwickler oder ein Entwicklerteam an einem Softwareprojekt
 \subsection{Git}
 Git \cite{git_2020} ist ein Open-Source-Tool von Linus Torvalds, dem Entwickler des Betriebssystems Linux, aus dem Jahr 2005. Heutzutage zählt es zu eines der weitverbreitesten Versionsverwaltungssysteme weltweit. Die Softwareentwickler kommen sowohl aus dem kommerziellen als auch aus dem öffentlichen Bereich. Aufgrund seiner Architektur ist Git ein Distributed VCS (DVCS, dt. verteiltes VCS) und funktioniert in zahlreichen Plattformen und Entwicklungsumgebungen. Das bedeutet, dass auf die gesamte History mit allen Entwicklungsarbeiten von jedem Standort aus zugegriffen werden kann. Neben seinem verteilten System ist Git unter anderem auf Performance, Sicherheit und Flexibilität fokussiert.
 
+\paragraph{Snapshots}\mbox{}\\
+Bei den meisten VCS werden Informationen als eine Liste mit den Änderungen innerhalb der Dateien gespeichert. Das bedeutet, dass bei jeder Version nur die Dateien festgehalten werden, deren Inhalt sich während den Entwicklungsarbeiten geändert haben.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=.4]{images/other_vcs.png}
+\end{center}
+	\caption{Speichern von Daten bei anderen VCS}
+\end{figure} 
+
+\mbox{}\\Im Gegensatz dazu werden die Daten als eine Art Folge von Schnappschüssen (engl. snapshots) betrachtet. Nach jedem Commit wird der aktuelle Stand des Repositories gespeichert. Dieser beinhaltet die gesamte Kopie des Projekts zu diesem Zeitpunkt und erhält eine Referenz zu diesem Schnappschuss in Form eines einzigartigen Hashwertes. Wenn das Entwicklerteam weiter am Projekt arbeitet und die Änderungen committet, erhalten die neuen und geänderten Dateien eine neuen Hashwert, während die Dateien, die sich nicht geändert haben, nur auf dieselbe Datei im vorherigen Schnappschuss verlinkt werden.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=.4]{images/git_snapshot.png}
+\end{center}
+	\caption{Speichern von Daten bei Git}
+\end{figure}
+
+\mbox{}\\Um eine Sicherheit garantieren zu können, werden die Dateiinhalte sowie ihre Beziehungen zu anderen Dateien, Verzeichnissen, Versionen, Commits und Tags mit dem Hashing-Algorithmus SHA1 gesichert. Dadurch kann der Quellcode des Entwicklers vor ungewollten Änderungen geschützt und die Historie vollständig mitverfolgt werden. In der Datenbank werden keine Dateinamen sondern nur Hashwerte gespeichert. Ein Beispiel für so einen Wert ist \texttt{fe215ed7198155ca796fbb8ef81683137c210492}.\\
+
+\paragraph{Workflow}\mbox{}\\
+In einem Git-Projekt sind die drei wichtigsten Stufen das Working Directory, die Staging Area und das Repository, wobei dieses in das \texttt{local} und das  \texttt{remote} Repository gegliedert werden kann. Mit  \texttt{add} wird eine Kopie des Working Directory erstellt, wobei die Änderungen an den Dateien mit  \texttt{new},  \texttt{modified} oder  \texttt{deleted} gekennzeichnet sind. Die Arbeitskopie befindet sich nun in der Staging Area und noch nicht in der Datenbank. Nun haben die Dateien den Status  \texttt{staged} und können im nächsten Schnappschuss eingepflegt werden. Nach einem  \texttt{commit} wird ein Schnappschuss im lokalen Repository erstellt, der mit einem  \texttt{push} in der Datenbank und somit im entfernten Repository gesichert wird.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=.3]{images/git_workflow.png}
+\end{center}
+	\caption{Die drei Hauptstufen von Git}
+\end{figure}
+
 \subsection{GitLab}
+Im Jahr 2011 wurde GitLab von den ukrainischen Entwicklern Dmitri Saparoschez und Valery Sizov ursprünglich in der Programmiersprache Ruby on Rails und mittlerweile noch zusätzlich in Go und Vue.js geschrieben. Es ist eine Webapplikation zur Versionskontrolle, das auf Git basiert. Neben dem Arbeiten mit Git stellt diese Anwendung einige weitere Funktionen zur Verfügung. Diese sind beispielsweise eine integrierte und kostenlose Continuous Integration/Delivery (CI/CD), das Issue Tracking, die Wiki-Funktion und viele mehr. Zusätzlich können Rollen zugewiesen werden, die die Berechtigungen von den jeweiligen Nutzern festlegen.
+
+\mbox{}\\Seit 2013 gibt es zwei Linzenzmodelle von GitLab. Die Community Edition (CE) wird unter der MIT-Lizenz als Open-Source-Software entwickelt und ist auf gitlab.com als Software as a Service (SaaS) erreichbar. Hingegen wird die Enterprise Edition unter einer proprietären Lizenz entwickelt und beinhaltet mehr Funktionen, die für Unternehmen relevanter sind. Bei der EE können Repositories auf einem eigenen Server verwaltet werden.
+
 
 \section{Node.js und npm}
 
