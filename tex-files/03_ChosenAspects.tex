@@ -428,7 +428,7 @@ Die wichtigsten ARIA Attribute für eine Toolbar sind in den folgenden Tabellen 
 \subsection{Workarounds}
 
 \paragraph{Unterstützung aller HTML-Tags}
-
+\mbox{}\\
 Eines der ersten Probleme, die im Rahmen dieser Diplomarbeit aufgetreten sind, ist die Tatsache, dass der 
 \texttt{<trix-editor>} nur die HTML-Tags unterstützt, die in der Tabelle \ref{table:trix_supported_tags} festgelegt sind. 
 Aus diesem Grund ist der Code für das Rendering geändert und dafür ein \texttt{TextAttribute}
@@ -440,7 +440,7 @@ Programm oder beim Initialisieren des Dokuments mit HTML. Die Funktion \texttt{s
 zugelassen und das JavaScript-Protokoll verweigert werden.
 
 \paragraph{Unterstützung von Tabellen und horizontalen Linien}
-
+\mbox{}\\
 Ein HTML \texttt{<table>} Element wird von Trix nicht unterstützt. Sobald eine Tabelle eingefügt wird, wird diese in 
 Umbrüche und Pipes umgewandelt je nach Tabellenzeile und deren Inhalt. Um dieses Problem zu lösen, werden 
 Tabellen in Trix Extension als einen Anhang betrachtet, da Trix mit Anhängen nichts anstellt und sie so belässt wie 
@@ -452,7 +452,7 @@ wird auch hier das \texttt{<hr>} Element als Anhang betrachtet, wobei es in ein 
 \texttt{<trix-editor>} eingefügt wird. Alle anderen Anhänge werden hingegen in ein \texttt{<p>}-Tag gepackt.
 
 \paragraph{Textformatierung beim Parsen eines Textes beibehalten}
-
+\mbox{}\\
 Beim Parsen von Absätzen in den \texttt{<trix-editor>} werden die Inhalte in ein \texttt{<div>} Element gegeben. Es 
 hat sich herausgestellt, dass Trix eine Funktion besitzt, mit der Seitenränder überprüft werden. Da ein \texttt{<p>}-
 Tag einen größeren Seitenrand hat, ist in der Erweiterung des Texteditors Trix die Funktion überschrieben worden 
