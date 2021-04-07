@@ -20,7 +20,7 @@ Bei Erreichung der höchsten Ebene ist eine hundertprozentige Web-Zugänglichkei
 Web Components (vgl. \cite{moz_webcomp_2019}) sind eine Web-Technologie, die es den Entwicklern ermöglicht, selbstdefinierte HTML-Elemente zu erstellen und wiederzuverwenden. Diese sind mit ihrem CSS und JavaScript gekapselt und sind somit vollständig von anderem Code getrennt. Mit einigen JavaScript Frameworks wie etwa Angular war es zwar bereits möglich wiederverwendbare HTML-Elemente zu definieren, allerdings nutzt jedes der Frameworks einen anderen Standard. Dies bedeutet, dass der Code in anderen Projekten in den meisten Fällen nicht verwendbar ist. Genau dieses Problem ist durch Web Components gelöst worden. Die Web Components bestehen aus drei Hauptbestandteilen:
 
 \begin{itemize}
-	\item \textbf{Customs ELements:} Ein Satz von JavaScript APIs zur Definition von benutzerdefinierten Elementen.
+	\item \textbf{Customs Elements:} Ein Satz von JavaScript APIs zur Definition von benutzerdefinierten Elementen.
 	\item \textbf{Shadow DOM:} Ein Satz von JavaScript APIs zum Hinzufügen eines DOM-Elementes mit gekapselten Shadow-DOM-Elementen, welches separat vom Hauptdokument DOM gerendert wird. Dadurch ist es möglich jegliche Funktionalitäten isoliert zu definieren, sodass der Programmierer keine Rücksicht auf Kollisionen mit anderen Dokumenten nehmen muss.
 	\item \textbf{HTML Templates:} Markup-Vorlagen, die innerhalb der Elemente \texttt{<template>} und \texttt{<slot>} geschrieben werden, werden nicht auf der dargestellten Seite abgebildet. Diese sind dafür da, um sie mehrmals als Vorlage eines benutzerdefinierten Elements zu verwenden.
 \end{itemize}
@@ -63,7 +63,7 @@ Das Factory Method Pattern (vgl. \cite{factory_method_2020}), auch bekannt als F
 	\item Falls die verwendeten Klassen nicht abstrakt sind, muss für jede individuelle Klasse eine Factory geschrieben werden.
 \end{itemize}
 
-\section{JavaScript Events \& EventListener}
+\section{JavaScript Events und EventListener}
 \paragraph{trix-initialize}\mbox{}\\
 Sobald der \texttt{<trix-editor>} im DOM registriert wird und sein internes \texttt{Editor}-Objekt zur Benutzung bereit ist, wird das Event \texttt{trix-initialize} gefeuert.\\
 Damit nicht die standardmäßig definierte Toolbar, sondern die erweiterte barrierefreie Toolbar, die diese ersetzen soll, angezeigt wird, ist es möglich auf dieses Event zu hören und dementsprechend darauf zu reagieren. Somit kann mit der Trix-Extension die Toolbar ersetzt werden, ohne dass der Endbenutzer etwas von diesem \\
@@ -123,7 +123,7 @@ Jedem \texttt{AttributeButton} kann die Identifikation eines HTML-Elements mitge
 
 \section{Barrierefreie Toolbar}
 % kurz beschreiben, wie Toolbar accessible wird - was macht eine accessible Toolbar aus/was machen wir
-\subsection{Bedienbarkeit \& Navigation}
+\subsection{Bedienbarkeit und Navigation}
 Damit eine Toolbar für den Benutzer so barrierefrei wie möglich sein soll, gibt es einige bewährte Verfahrensweisen, 
 die vom W3 Consortium empfohlen werden (vgl. \cite{accessible_toolbar_2020}).
 
