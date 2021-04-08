@@ -22,6 +22,7 @@
 \usepackage{url}
 \usepackage{enumitem}
 \usepackage{longtable}
+\usepackage{tocbibind}
 
 \include{Globals} % Set basic data (author, title, etc.) of your thesis
 \include{00_FrontPageDefinitions} % This file should not really be touched
@@ -41,8 +42,11 @@
 \bibliography{da_bibliography}{} % end of the thesis, contains quotes etc.
 \bibliographystyle{alphaurl} % alternatives plainurl, alphaurl;  german alternative: dinat (but add package natbib)
 
-\listoffigures %for images
-\listoftables % for diagrams, drawings etc.
+\setcounter{tocdepth}{2}
+
+\listoffigures
+
+\listoftables
 
 \appendix % attachment
 \include{05_Workload}
