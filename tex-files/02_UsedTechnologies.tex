@@ -89,7 +89,7 @@ Mehrere Commits aus zwei Entwicklungszweigen werden in einen einheitlichen Verla
 Im Gegensatz zu einfachen Commits während der Entwicklung, haben Merge-Commits zwei übergeordnete Commits. Sind Änderungen in beiden Branches vorgenommen worden, können von Git nicht automatisch zusammengeführt werden. Dies führt oftmals zu einem Merge-Konflikt, der von dem Entwickler manuell beseitigt werden muss. Im Normalfall kann Git die Commit-Historie automatischen zusammenführen, es sei denn es gibt Änderungen im aktuellen Branch und im Ziel-Branch, die zu Konflikten im Projekt führen.
 
  \mbox{}\\
-Grundsätzlich gibt es zwei Arten von Merges:
+Grundsätzlich gibt es zwei Arten von Merges (vgl. \cite{atlassian_git_merge_2021}):
 
 \begin{itemize}
 	\item \textbf{Fast-Forward-Merge:}\\
@@ -320,13 +320,36 @@ Rechenintensive Anfragen könnten den einzigen Thread überlasten und alle ander
 
 \paragraph{Konkurrenz}
 \mbox{}\\
-Deno (vgl. \cite{deno_2021}) ist genauso wie Node.js eine JavaScript-Laufzeitumgebung und ist von demselben Entwickler Ryan Dahl. Seiner Meinung nach hat Node.js viele Probleme gehabt und er ist auch nicht mit der Benutzerfreundlichkeit zufrieden gewesen. Aus diesem Grund ist Deno erstmals im Jahr 2018 veröffentlicht worden. Neben JavaScript wird auch TypeScript nativ unterstützt und ein großer Wert auf die Sicherheit mit Erlaubnissen gelegt. Ein Modulsystem wie npm kommt nicht mehr zum Einsatz. Externe Module beziehungsweise Bibliotheken werden mit absoluten Adressen importiert. Dieses Konzept ist von Golang inspiriert.
+Deno (vgl. \cite{deno_2021}) ist genauso wie Node.js eine JavaScript-Laufzeitumgebung und ist von demselben Entwickler Ryan Dahl. Node.js hat viele Probleme gehabt und die Benutzerfreundlichkeit ist ebenfalls nicht zufriedenstellend gewesen. Aus diesem Grund ist Deno erstmals im Jahr 2018 veröffentlicht worden. Neben JavaScript wird auch TypeScript nativ unterstützt und ein großer Wert auf die Sicherheit mit Erlaubnissen gelegt. Ein Modulsystem wie npm kommt nicht mehr zum Einsatz. Externe Module beziehungsweise Bibliotheken werden mit absoluten Adressen importiert. Dieses Konzept ist von Golang inspiriert.
 
 \subsection{npm}
-\cite{npm_2021}
+npm (Node Package Manager~\cite{npm_2021}) ist ein Paketmanager, der die Verwaltung und Bereitstellung der Module und Abhängigkeiten pflegt. Diese und jegliche andere Informationen stehen in der \texttt{package.json} Datei. npm setzt sich aus zwei Komponenten zusammen:
+
+\paragraph{Registry}
+\mbox{}\\
+Die Registry (vgl. \cite{npm_registry_2021}) beziehungsweise das Repository ist eine Plattform von npm selber, welche Entwickler die Möglichkeit gibt, Open-Source Software zu veröffentlichen, die als Packages bekannt sind. Der Schwerpunkt liegt hier bei JavaScript Libraries und Frameworks. Außerdem dürfen auch andere Dateien, wie zum Beispiel CSS oder TypeScript Deklarationen, hochgeladen werden.
+\\
+Für Unternehmen oder Personen, die ihren Code nicht veröffentlichen wollen, besteht die Option sich einer npm Mitgliedschaft anzuschließen. Mit der Mitgliedschaft dürfen die Benutzer private packages hochladen. Die Zugriffsverteilung ist je nach Abonnement unterschiedlich und auf Einzelpersonen oder Mitglieder und Teams eines Unternehmens eingeschränkt.
+
+\mbox{}\\
+\textbf{Alternativen für die npm Registry sind:}
+
+\mbox{}\\
+\textbf{Verdaccio} (vgl. \cite{verdaccio_2021}) ist eine simple und leichtgewichtige Registry zum selber Hosten. Die Open-Source Software eignet sich gut für Personen die sich kaum mit dem Einrichten von Produkten auseinandergesetzt haben, da keine Konfigurationen erforderlich sind.
+
+\mbox{}\\
+\textbf{Jfrog Artifactory} (vgl. \cite{jfrog_2021}) ist eine sogenannte One-Stop Solution Software. Jfrog Artifactory hat nicht nur die npm Registry integriert, sondern auch andere wie Maven, Rubygems, Docker, Go und etliche andere. Sie ist die perfekte Lösung für große Unternehmen, die sich mit verschiedenen Technologien beschäftigen. Die Zugriffe auf Packages oder zahlreiche andere Repository-Formate erfolgt mit einer Benutzer- und Rechteverwaltung. Jfrog Artifactory kann selbst gehostet oder auf der Cloud von Jfrog bereitgestellt werden.
+
+\paragraph{npm CLI}
+\mbox{}\\
+Die größte Eigenschaft von der CLI, ist die Installation von einer npm Registry. Als Standard wird die Registry von npm herangezogen. Mit \texttt{npm config set registry https://my-registry.com} kann die Registry geändert werden. Um Abhängigkeiten oder Module zu installieren, wird der Befehl \texttt{npm install my-package} verwendet. Die installierten Packages kommen in den Ordner \texttt{/node\_modules} und werden auch automatisch in die \texttt{package.json} eingepflegt. Somit muss der Entwickler diese Aufgabe nicht händisch übernehmen. Des Weiteren können Packages global installiert werden. Die am weitesten verbreitete Anwendungsfälle sind CLIs die in JavaScript programmiert worden sind. Ein Beispiel dafür wäre das beliebte Web-Framework Angular mit seiner Angular-CLI. Nach der globalen Installation kann man auf das CLI-Programm \texttt{ng} direkt vom Terminal aus zugreifen.
+\\
+Für das erstellen von npm Projekten wird der Befehl \texttt{npm init} benötigt. Hier fragt die npm CLI nach Informationen wie Projektname, Beschreibung, Author etc.
+
+\section{Jest}
 
 \section{Webpack}
-Webpack~\cite{webpack_2021} ist ein statische Modul-Bundler für JavaScript-Applikationen. Mehrere JavaScript-Dateien werden zur Nutzung in einem Webbrowser zusammengeführt und zu einer oder mehreren Dateien gebündelt, abhängig von der Anzahl an Modulen. Diese Module werden intern in einem Abhängigkeitsgraphen dargestellt. Rekursiv beginnt dieser vom Eingangspunkt und fügt alle Abhängigkeiten in diesen Graphen ein. Somit wird nur der Code zusammengebündelt, der auch benötigt wird. \\
+Webpack~\cite{webpack_2021} ist ein statischer Modul-Bundler für JavaScript-Applikationen. Mehrere JavaScript-Dateien werden zur Nutzung in einem Webbrowser zusammengeführt und zu einer oder mehreren Dateien gebündelt, abhängig von der Anzahl an Modulen. Diese Module werden intern in einem Abhängigkeitsgraphen dargestellt. Rekursiv beginnt dieser vom Eingangspunkt und fügt alle Abhängigkeiten in diesen Graphen ein. Somit wird nur der Code zusammengebündelt, der auch benötigt wird. \\
 Des Weiteren kann Webpack mithilfe einer JavaScript-Datei konfiguriert werden.
 
 \mbox{}\\
