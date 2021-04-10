@@ -1,7 +1,7 @@
 \chapter{Ausgewählte Aspekte}
 \section{WCAG 2.1}
 \label{wcag_2_1}
-Die Web Content Accessibility Guidelines 2.1 (WCAG 2.1, vgl. \cite{wcag_2_1_2018}) wurden im Dezember 2008 veröffentlicht und sind ein Standard, der weltweit verwendet wird, um Dienstleistungen im Web so barrierefrei wie möglich zu gestalten. Somit können auch Menschen mit Behinderungen, wie etwa Sehschwäche, Blindheit, Hörverlust, Taubheit, körperliche oder kognitive Einschränkung, Sprachbehinderung, Lichtempfindlichkeit, Lernbehinderung oder Kombinationen dieser, das World Wide Web nutzen. Diese Richtlinien sind vom World Wide Web Consortium (W3C, vgl. \cite{w3c_1994}) am 5. Juni 2018 für Webanwendungen empfohlen worden.
+Die Web Content Accessibility Guidelines 2.1 (WCAG 2.1) sind im Dezember 2008 veröffentlicht worden und sind ein Standard, der weltweit verwendet wird, um Dienstleistungen im Web so barrierefrei wie möglich zu gestalten (W3C 2018, vgl. \cite{wcag_2_1_2018}, 18.08.2020). Somit können auch Menschen mit Behinderungen, wie etwa Sehschwäche, Blindheit, Hörverlust, Taubheit, körperliche oder kognitive Einschränkung, Sprachbehinderung, Lichtempfindlichkeit, Lernbehinderung oder Kombinationen dieser, das World Wide Web nutzen. Diese Richtlinien sind vom World Wide Web Consortium (W3C) am 5. Juni 2018 für Webanwendungen empfohlen worden.
 
 Durch die Befolgung der Empfehlungen des W3C können Webdesigner und -entwickler, politische Entscheidungsträger, Käufer, Lehrer und Studenten beziehungsweise Schüler das WWW nahezu problemlos nutzen. Die WCAG 2.1 setzen sich aus allgemeinen Prinzipien, allgemeinen Richtlinien, prüfbaren Erfolgskriterien sowie einer Vielzahl an Techniken zusammen:
 
@@ -12,12 +12,15 @@ Durch die Befolgung der Empfehlungen des W3C können Webdesigner und -entwickler
 	\item \textbf{Ausreichende und beratende Techniken} dienen zur Erfüllung der Erfolgskriterien und als Beratung. Häufig vorkommende Misserfolge sind ebenfalls dokumentiert.
 \end{itemize}
 
-Bei Erreichung der höchsten Ebene ist eine hundertprozentige Web-Zugänglichkeit jedoch nicht garantiert. Die WCAG 2.1 dienen ausschließlich als Anleitung, um das Web so barrierefrei wie möglich zu gestalten. Deshalb wird vom W3C empfohlen sich regelmäßig über den neuesten Stand zu informieren und sich mit anderen zu beraten. Folgende Bemerkung ist vom W3C (2008, \cite{wcag_2_1_2018}) auf der Webseite veröffentlicht worden:\\
-``[...] Authors are encouraged to consider the full range of techniques [...] as well as to seek relevant advice about current best practice to ensure that Web content is accessible, as far as possible, to this community. [...]``
+\mbox{}\\
+Bei Erreichung der höchsten Ebene ist eine hundertprozentige Web-Zugänglichkeit jedoch nicht garantiert. Die WCAG 2.1 dienen ausschließlich als Anleitung, um das Web so barrierefrei wie möglich zu gestalten. Deshalb wird vom W3C empfohlen sich regelmäßig über den neuesten Stand zu informieren und sich mit anderen zu beraten. Folgende Bemerkung ist vom W3C veröffentlicht worden:\\
+
+\mbox{}\\
+''[...] Authors are encouraged to consider the full range of techniques [...] as well as to seek relevant advice about current best practice to ensure that Web content is accessible, as far as possible, to this community. [...]'' (W3C 2018, vgl. \cite{wcag_2_1_2018}, 18.08.2020)
 
 \section{Web Components}
 \label{web_comp}
-Web Components (vgl. \cite{moz_webcomp_2019}) sind eine Web-Technologie, die es den Entwicklern ermöglicht, selbstdefinierte HTML-Elemente zu erstellen und wiederzuverwenden. Diese sind mit ihrem CSS und JavaScript gekapselt und sind somit vollständig von anderem Code getrennt. Mit einigen JavaScript Frameworks wie etwa Angular war es zwar bereits möglich wiederverwendbare HTML-Elemente zu definieren, allerdings nutzt jedes der Frameworks einen anderen Standard. Dies bedeutet, dass der Code in anderen Projekten in den meisten Fällen nicht verwendbar ist. Genau dieses Problem ist durch Web Components gelöst worden. Die Web Components bestehen aus drei Hauptbestandteilen:
+Web Components sind eine Web-Technologie, die es den Entwicklern ermöglicht, selbstdefinierte HTML-Elemente zu erstellen und wiederzuverwenden (MDN Web Docs, vgl. \cite{moz_webcomp_2019}, 03.10.2020). Diese sind mit ihrem CSS und JavaScript gekapselt und sind somit vollständig von anderem Code getrennt. Mit einigen JavaScript Frameworks wie etwa Angular war es zwar bereits möglich wiederverwendbare HTML-Elemente zu definieren, allerdings nutzt jedes der Frameworks einen anderen Standard. Dies bedeutet, dass der Code in anderen Projekten in den meisten Fällen nicht verwendbar ist. Genau dieses Problem ist durch Web Components gelöst worden. Die Web Components bestehen aus drei Hauptbestandteilen:
 
 \begin{itemize}
 	\item \textbf{Customs Elements:} Ein Satz von JavaScript APIs zur Definition von benutzerdefinierten Elementen.
@@ -28,7 +31,7 @@ Web Components (vgl. \cite{moz_webcomp_2019}) sind eine Web-Technologie, die es 
 % Factory Pattern, Events, Delegate, Observer
 \section{Factory Method Pattern}
 \subsection{Was sind Design Patterns?}
-Um das Factory Method Pattern zu verstehen, muss man zunächst einmal wissen, was ein Design Pattern (dt. Entwurfsmuster, vgl. \cite{design_pattern_2020}) ist. In der Softwareentwicklung treten beim Entwurf oftmals dieselben Probleme auf. Abhilfe hierfür schaffen Design Patterns, die eine allgemeine wiederholbare Lösung dieser Designprobleme sind, den Entwicklungsprozess beschleunigen und programmiersprachenunabhängig sind. Sie repräsentieren somit eine Idee, und keine spezielle Implementierung, durch deren Verwendung der Quellcode flexibler, wiederverwendbar und einfacher für die Entwickler zu warten ist. Allerdings sind sie nicht in jedem Projekt zwingend erforderlich, da sie lediglich für die Problemlösung und nicht für die Projektentwicklung gedacht sind.
+Um das Factory Method Pattern zu verstehen, muss man zunächst einmal wissen, was ein Design Pattern (dt. Entwurfsmuster) ist. In der Softwareentwicklung treten beim Entwurf oftmals dieselben Probleme auf. Abhilfe hierfür schaffen Design Patterns, die eine allgemeine wiederholbare Lösung dieser Designprobleme sind, den Entwicklungsprozess beschleunigen und programmiersprachenunabhängig sind (Source Making, vgl. \cite{design_pattern_2020}, 30.10.2020). Sie repräsentieren somit eine Idee, und keine spezielle Implementierung, durch deren Verwendung der Quellcode flexibler, wiederverwendbar und einfacher für die Entwickler zu warten ist. Allerdings sind sie nicht in jedem Projekt zwingend erforderlich, da sie lediglich für die Problemlösung und nicht für die Projektentwicklung gedacht sind.
 
 \paragraph{Arten von Design Patterns}\mbox{}\\
 
@@ -39,7 +42,7 @@ Um das Factory Method Pattern zu verstehen, muss man zunächst einmal wissen, wa
 \end{itemize}
 
 \subsection{Begriffserklärung und Verwendung}
-Das Factory Method Pattern (vgl. \cite{factory_method_2020}), auch bekannt als Factory Pattern oder Fabrikmethode, definiert ein Interface oder eine abstrakte Klasse zur Erstellung von Objekten. Die Objekterstellung wird hierbei von den Subklassen übernommen, die entscheiden welche Klasse instanziiert wird.
+Das Factory Method Pattern, auch bekannt als Factory Pattern oder Fabrikmethode, definiert ein Interface oder eine abstrakte Klasse zur Erstellung von Objekten (Source Making, vgl. \cite{factory_method_2020}, 30.10.2020). Die Objekterstellung wird hierbei von den Subklassen übernommen, die entscheiden welche Klasse instanziiert wird.
 
 \begin{figure}[H]
 \begin{center}
@@ -53,8 +56,8 @@ Das Factory Method Pattern (vgl. \cite{factory_method_2020}), auch bekannt als F
 
 \begin{itemize}
 	\item Mit Hilfe des Factory Method Patterns können Unterklassen die Art, wie Objekte erstellt werden sollen, selbst wählen.
-	\item Dieses Design Pattern fördert die lose Kopplung. Das heißt im Allgemeinen, dass anwendungsspezifische Klassen 			nicht mehr in den Code eingebunden werden müssen. 
-	\item Die Kommunikation erfolgt ausschließlich über die Schnittstelle oder die abstrakte Klasse, so dass der Code mit allen 		Klassen funktioniert, die entweder die Schnittstelle implementieren oder die abstrakte Klasse erweitern.
+	\item Dieses Design Pattern fördert die lose Kopplung. Das heißt im Allgemeinen, dass anwendungsspezifische Klassen nicht mehr in den Code eingebunden werden müssen. 
+	\item Die Kommunikation erfolgt ausschließlich über die Schnittstelle oder die abstrakte Klasse, so dass der Code mit allen Klassen funktioniert, die entweder die Schnittstelle implementieren oder die abstrakte Klasse erweitern.
 \end{itemize}
 
 \paragraph{Nachteile}
@@ -125,7 +128,7 @@ Jedem \texttt{AttributeButton} kann die Identifikation eines HTML-Elements mitge
 % kurz beschreiben, wie Toolbar accessible wird - was macht eine accessible Toolbar aus/was machen wir
 \subsection{Bedienbarkeit und Navigation}
 Damit eine Toolbar für den Benutzer so barrierefrei wie möglich sein soll, gibt es einige bewährte Verfahrensweisen, 
-die vom W3 Consortium empfohlen werden (vgl. \cite{accessible_toolbar_2020}).
+die vom W3 Consortium empfohlen werden (W3C 2019, vgl. \cite{accessible_toolbar_2020}, 10.04.2021).
 
 \paragraph{Tastaturanforderung}
 
@@ -249,7 +252,7 @@ Empfohlen wird, dass sich ein Link mit \texttt{Enter} oder der  \texttt{Leertast
 
 \paragraph{ARIA Attribute}
 Um eine Toolbar bestmöglich so zu gestalten, sodass diese für die meisten Menschen mit und ohne 
-Einschränkungen zugänglich ist, können Accessible Rich Internet Applications (ARIA \cite{wai_aria_2020}) Attribute zum Einsatz kommen.  
+Einschränkungen zugänglich ist, können Accessible Rich Internet Applications (WAI-ARIA) Attribute zum Einsatz kommen (W3C 2006, vgl. \cite{wai_aria_2020}, 10.09.2020).  
 Diese sind bei den meisten Screenreadern und Browsern implementiert und helfen insbesondere bei dynamischen 
 Benutzeroberflächen. Beispiele hierfür sind Aktualisierung von Inhalten in Echtzeit, Hinweise oder Meldungen  bei 
 Formularen oder auf der Webseite sowie die Navigation durch Webapplikationen. \\
