@@ -304,6 +304,71 @@ JavaScript ist schwach typisierte und dynamische Programmiersprache. Wenn Variab
 Dasselbe gilt für die Überprüfung der Ungleichheit \texttt{!=} und \texttt{!==}.
 
 \section{TypeScript}
+TypeScript (TS) ist eine Erweiterung von JavaScript und basiert ebenfalls auf den ECMAScript Standards (Malcher, Hoppe und Koppenhagen 2020, vgl. \cite{typescript_2020}). Im Gegensatz zu JavaScript besitzt TypeScript ein statisches Typsystem. An und für sich wird TypeScript nicht von Browsern unterstützt, denn es handelt sich um eine Programmiersprache, die mittels eines Kompilierers diese Sprache auf JavaScript umwandelt. Man spricht hierbei von einem Transpiler. Mit einem Typsystem ist es möglich, bereits zur Entwicklungszeit Fehler und Probleme ausfindig zu machen.\\
+TypeScript ermöglicht auch die Verwendung von neuen ECMAScript-Features, weshalb Projekte mit den neuesten Features erstellt werden können. Der Kompilierer ist dafür zuständig, das Browser mit älteren Versionen des ECMAScriptes den transpilierten Code ausführen können.
+
+\newpage
+\subsection{Typen}
+Wie zuvor erwähnt worden ist, ist eine der Stärken von TypeScript die Typisierung. Es werden einige primitive Datentypen mitgeliefert. Zu denen gehören \texttt{number}, \texttt{string} und \texttt{boolean}.
+
+\begin{itemize}
+	\item \texttt{number} umfasst alle Gleitkommazahlen sowie ganze Zahlen.
+	\item \texttt{string} definiert eine Zeichenkette.
+	\item \texttt{boolean} kann die Wahrheitswerte \texttt{true} oder \texttt{false} annehmen.
+\end{itemize}
+
+\mbox{}\\
+Variablen, die mit diesen jeweiligen Typen definiert sind, dürfen keinen anderen Wert annehmen, der nicht ihrem Datentyp entspricht. Ansonsten wird ein Fehler vom Kompilierer geworfen. Einige Entwicklungsumgebung besitzen ebenfalls die Funktion diese Fehler erkennen zu können.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[scale=.7]{images/typescript-primitve-types.png}
+	\end{center}
+		\caption{Variablen mit primitiven Datentypen}
+\end{figure}
+
+\mbox{}\\
+Neben den primitiven Datentypen gibt es die beliebigen Werte \texttt{any} und \texttt{unknown}. Diese Datentypen sind dynamisch und können jeden möglichen Wert annehmen, ohne dass sich der Kompilierer beschwert. 
+
+\subsection{Union Types}
+Union Types beschreiben Typen, die aus mehren Typen zusammengesetzt sind. Ein geeignetes Beispiel hierfür ist die Hausnummer. Sie kann entweder eine Zahl oder eine Zahl mit Buchstaben sein.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[scale=.7]{images/typescript-union-types.png}
+	\end{center}
+		\caption{Variable mit mehreren Typen}
+\end{figure}
+
+\subsection{Type Definition}
+Angenommen es gibt eine JavaScript Bibliothek, die oft zum Einsatz kommt und unter anderem wird diese auch für TypeScript Projekte verwendet. Allerdings kann TypeScript nichts mit dieser Bibliothek anfangen, da die Typen nicht existent sind. Genau aus diesem Grund werden Type Definitions verwendet. Sie werden mit den jeweiligen JavaScript-Dateien geliefert und beinhalten keinen Quellcode, sondern lediglich nur Informationen zu diesem. Dazu gehören Informationen wie Datentypen, Konstanten und Funktionen mit Parameter- und Rückgabetypen.
+
+\mbox{}\\
+Eine Funktion wird vom TypeScript-Compiler in JavaScript umgewandelt und verliert somit jegliche Informationen zu den vorher festgelegten Datentypen. Daher können Dateien für Type Definitions generiert oder erstellt werden.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[scale=.7]{images/typescript-type-definition-1.png}
+	\end{center}
+		\caption{Funktion zum Addieren von zwei Zahlen in TypeScript}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[scale=.7]{images/typescript-type-definition-2.png}
+	\end{center}
+		\caption{Funktion zum Addieren von zwei Zahlen in JavaScript}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[scale=.7]{images/typescript-type-definition-3.png}
+	\end{center}
+		\caption{Type Definition für die Funktion zum Addieren von zwei Zahlen}
+\end{figure}
+
+\subsection{TypeScript Compiler}
+Der TypeScript Compiler gibt dem Entwickler einen Spielraum, gewisse Einstellungen zu definieren. Dazu zählen strikte Null-Überprüfungen, wo ein Fehler geworfen wird, wenn die Variable \texttt{null} sein kann und nicht überprüft wird. Außerdem kann der Datentyp \texttt{any} ausgeschaltet werden für eine genauere Datentypisierung. Variablen, die nicht verwendet werden, wie beispielsweise lokale Variablen oder Parametervariablen, können so eingestellt werden, dass ein Fehler geworfen wird. Für eine einfachere und angenehmere Entwicklung können Source-Maps aktiviert werden. Diese dienen zur Anzeige des Quellcodes in TypeScript, wenn Fehler im Browser geworfen werden oder ein Debug durchgeführt wird.
 
 \section{Node.js und npm}
 
@@ -324,7 +389,7 @@ Rechenintensive Anfragen könnten den einzigen Thread überlasten und alle ander
 Deno ist genauso wie Node.js eine JavaScript-Laufzeitumgebung und ist von demselben Entwickler Ryan Dahl (Deno, vgl. \cite{deno_2021}, 13.02.2021). Node.js hat viele Probleme gehabt und die Benutzerfreundlichkeit ist ebenfalls nicht zufriedenstellend gewesen. Aus diesem Grund ist Deno erstmals im Jahr 2018 veröffentlicht worden. Neben JavaScript wird auch TypeScript nativ unterstützt und ein großer Wert auf die Sicherheit mit Erlaubnissen gelegt. Ein Modulsystem wie npm kommt nicht mehr zum Einsatz. Externe Module beziehungsweise Bibliotheken werden mit absoluten Adressen importiert. Dieses Konzept ist von Golang inspiriert.
 
 \subsection{npm}
-npm (Node Package Manager) ist ein Paketmanager, der die Verwaltung und Bereitstellung der Module und Abhängigkeiten pflegt (vgl. \cite{npm_2021}, 12.02.2021). Diese und jegliche andere Informationen stehen in der \texttt{package.json} Datei. npm setzt sich aus zwei Komponenten zusammen:
+Node Package Manager, kurz npm, ist ein Paketmanager, der die Verwaltung und Bereitstellung der Module und Abhängigkeiten pflegt (vgl. \cite{npm_2021}, 12.02.2021). Diese und jegliche andere Informationen stehen in der \texttt{package.json} Datei. npm setzt sich aus zwei Komponenten zusammen:
 
 \paragraph{Registry}
 \mbox{}\\
@@ -343,15 +408,15 @@ Für Unternehmen oder Personen, die ihren Code nicht veröffentlichen wollen, be
 
 \paragraph{npm CLI}
 \mbox{}\\
-Die größte Eigenschaft von der CLI, ist die Installation von einer npm Registry. Als Standard wird die Registry von npm herangezogen. Mit \texttt{npm config set registry https://my-registry.com} kann die Registry geändert werden. Um Abhängigkeiten oder Module zu installieren, wird der Befehl \texttt{npm install my-package} verwendet. Die installierten Packages kommen in den Ordner \texttt{/node\_modules} und werden auch automatisch in die \texttt{package.json} eingepflegt. Somit muss der Entwickler diese Aufgabe nicht händisch übernehmen. Des Weiteren können Packages global installiert werden. Die am weitesten verbreitete Anwendungsfälle sind CLIs die in JavaScript programmiert worden sind. Ein Beispiel dafür wäre das beliebte Web-Framework Angular mit seiner Angular-CLI. Nach der globalen Installation kann man auf das CLI-Programm \texttt{ng} direkt vom Terminal aus zugreifen.
-\\
-Für das erstellen von npm Projekten wird der Befehl \texttt{npm init} benötigt. Hier fragt die npm CLI nach Informationen wie Projektname, Beschreibung, Author etc.
+Die größte Eigenschaft von der CLI, ist die Installation von einer npm Registry. Als Standard wird die Registry von npm herangezogen. Mit \texttt{npm config set registry https://my-registry.com} kann die Registry geändert werden. Um Abhängigkeiten oder Module zu installieren, wird der Befehl \texttt{npm install my-package} verwendet. Die installierten Packages kommen in den Ordner \texttt{/node\_modules} und werden auch automatisch in die \texttt{package.json} eingepflegt. Somit muss der Entwickler diese Aufgabe nicht händisch übernehmen. Des Weiteren können Packages global installiert werden. Die am weitesten verbreitete Anwendungsfälle sind CLIs die in JavaScript programmiert worden sind. Ein Beispiel dafür wäre das beliebte Web-Framework Angular mit seiner Angular-CLI. Nach der globalen Installation kann man auf das CLI-Programm \texttt{ng} direkt vom Terminal aus zugreifen.\\
+Für das Erstellen von npm Projekten wird der Befehl \texttt{npm init} benötigt. Hier fragt die npm CLI nach Informationen wie Projektname, Beschreibung, Author etc.
 
 \section{Jest}
+Jest ist ein Testing Framework für die JavaScript-Laufzeitumgebung NodeJS (Facebook, vgl. \cite{jest_2021}, 11.04.2021). Da Jest zuerst die Tests durchführt, die beim letzten Mal fehlgeschlagen sind und anschließend die Tests durchführt, die mehr Zeit beanspruchen, ist das parallele Testen sehr schnell. Jest bietet dem Entwickler die Möglichkeit, die Test Coverage zu evaluieren. Mit der Mocking API kann jedes beliebige Objekt gemockt werden.
 
 \section{Webpack}
 Webpack ist ein statischer Modul-Bundler für JavaScript-Applikationen (vgl. \cite{webpack_2021}, 11.02.2021). Mehrere JavaScript-Dateien werden zur Nutzung in einem Webbrowser zusammengeführt und zu einer oder mehreren Dateien gebündelt, abhängig von der Anzahl an Modulen. Diese Module werden intern in einem Abhängigkeitsgraphen dargestellt. Rekursiv beginnt dieser vom Eingangspunkt und fügt alle Abhängigkeiten in diesen Graphen ein. Somit wird nur der Code zusammengebündelt, der auch benötigt wird. \\
-Des Weiteren kann Webpack mithilfe einer JavaScript-Datei konfiguriert werden.
+Der Vorteil besteht darin, dass schnell eine Datei heruntergeladen werden kann, die verkleinert und gebündelt ist. 
 
 \mbox{}\\
 Das Konzept von Webpack kann in sechs Kernpunkte unterteilt werden:

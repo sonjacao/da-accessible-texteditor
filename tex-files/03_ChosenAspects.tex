@@ -124,11 +124,27 @@ Der \texttt{MutationObserver} ist ein Interface, der Veränderungen in der Baums
 Sobald die Toolbar geladen wird bzw. bestimmte Buttons geklickt werden, werden einige andere Buttons deaktiviert und erhalten das Attribut \texttt{disabled}. Dieses verhindert allerdings das Fokussieren eines Buttons, was mit dem Attribut \texttt{aria-disabled} problemlos funktioniert. Abhilfe verschafft deshalb ein \texttt{MutationObserver}. Erhält ein Button nun das Attribut \texttt{disabled}, beobachtet der \texttt{MutationObserver} diese Veränderung und entfernt es. Stattdessen fügt es das Attribut \texttt{aria-disabled} hinzu und setzt es auf \texttt{true}. Bei allen anderen Buttons, die nicht deaktiviert sind, ist \texttt{aria-disabled=false}.
 
 \section{Delegation}
-Die Delegation findet in der objektorientierten Programmierung verschieden Verwendung zur dynamischen Bindung von Methoden zur Programmlaufzeit.\\
-Jedem \texttt{AttributeButton} kann die Identifikation eines HTML-Elements mitgegeben werden, das einen Dialog repräsentiert und bereits im HTML-Code erstellt worden ist. Die Delegation ermöglicht eine Kommunikation zwischen der Trix-Toolbar und dem Dialog. Sie dient ausschließlich dazu den Dialog zu öffnen und zu schließen, wobei zwei zusätzliche Funktionalitäten das Erstellen und das Entfernen von Links sind. Alles, was während oder nach dem Dialog geschieht, wird vom Entwickler selbst bestimmt.
+Die Delegation ist eine Alternative für die Vererbung. Vereinfacht wird die Aufgabe eines Objektes auf ein anderes Objekt verlagert (GeeksforGeeks 2018, vgl. \cite{delegation_2018}, 11.04.2021). Das kann so aufgefasst werden, dass die Methode des ursprünglichen Objektes die Methode des Zielobjektes aufruft. Ein Beispiel hierfür ist eine Basisklasse \texttt{Printer}, die die Klassen \texttt{RealPrinter} und \texttt{Computer} erbt. Somit ist diese Basisklasse in der Lage die Methode \texttt{print()} aufzurufen. Vererbung ist an und für sich eine gute Strategie, um Probleme zu lösen, sollte aber einen logischen Zusammenhang zwischen \texttt{parent} und \texttt{child} aufweisen können. Ein Beispiel für einen schlechten Zusammenhang ist, dass ein Auto einen Motor erbt. Stattdessen kann eine Assoziation solch eine Beziehung besser beschreiben als eine Vererbung (TU Wien 2013, vgl. \cite{tuv_delegation_2013}, 11.04.2021).
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=.7]{images/delegation-1.png}
+\end{center}
+	\caption{Ohne Delegation} 
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=.7]{images/delegation-2.png}
+\end{center}
+	\caption{Mit Delegation} 
+\end{figure}
+
+\mbox{}\\
+Im Rahmen der praktischen Arbeit dieser Diplomarbeit kann jedem \texttt{AttributeButton} kann die Identifikation eines HTML-Elements mitgegeben werden, das einen Dialog repräsentiert und bereits im HTML-Code erstellt worden ist. Die Delegation ermöglicht eine Kommunikation zwischen der Trix-Toolbar und dem Dialog. Sie dient ausschließlich dazu den Dialog zu öffnen und zu schließen, wobei zwei zusätzliche Funktionalitäten das Erstellen und das Entfernen von Links sind. Alles, was während oder nach dem Dialog geschieht, wird vom Entwickler selbst bestimmt.
 
 \section{Barrierefreie Toolbar}
-% kurz beschreiben, wie Toolbar accessible wird - was macht eine accessible Toolbar aus/was machen wir
+
 \subsection{Bedienbarkeit und Navigation}
 Damit eine Toolbar für den Benutzer so barrierefrei wie möglich sein soll, gibt es einige bewährte Verfahrensweisen, 
 die vom W3 Consortium empfohlen werden (W3C 2019, vgl. \cite{accessible_toolbar_2020}, 10.04.2021).
@@ -602,6 +618,7 @@ Zusätzlich zu den Parametern, die in \texttt{BaseButton} definiert sind, gibt e
 vordefinierten Aktionen. Der Action Button findet ausschließlich im \texttt{StandardButtonManager} Verwendung und es können
 keine selbstdefinierte Werte für \texttt{trixAction} festgelegt werden, da diese für den Texteditor unbekannt sind.
 
+\newpage
 \subsection{Attribute Button}
 Bei Trix gibt es zwei Typen zum Formatieren des Textes: \texttt{textAttributes} und \\
 \texttt{blockAttributes}. Wenn die gesamte Zeile gestaltet werden soll, werden \\
