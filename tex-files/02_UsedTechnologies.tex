@@ -5,7 +5,7 @@
 \subsection{Versionskontrollsystem}
 Oftmals arbeitet ein Entwickler oder ein Entwicklerteam an einem Softwareprojekt, um entweder Fehler zu beheben oder neue Funktionalitäten hinzuzufügen. Hierbei werden Änderungen am Quellcode durchgeführt, die regelmäßig gesichert werden müssen. Diese Änderungen können in manchen Fällen auch dazu führen, dass etwas anderes im Code nicht mehr so funktioniert wie es sollte. Dann werden weitere Änderungen gemacht, um wieder einen lauffähigen Stand herzustellen, jedoch kann es passieren, dass plötzlich gar nichts mehr funktioniert.
 
-\mbox{}\\Abhilfe für dieses Problem bietet ein Versionskontrollsystem, auch als VCS (Version Control System) bezeichnet, das Änderungen in der Projektentwicklung festhält (Dirk 2019, vgl. \cite{vcs_2019}, 15.11.2020). Dadurch ist es möglich zu einem späteren beliebigen Zeitpunkt auf ältere Versionen des Systems zurückzugreifen, den aktuellen Code mit früheren Versionen zu vergleichen oder Bugfixes zu implementieren. Arbeiten mehrere Entwickler an denselben Dateien im Quellcode, so kann mitverfolgt werden, welche Person welche Änderungen gemacht hat. Ein Projekt, das mit einem VCS verwaltet wird, wird Repository genannt. Ein Repository kann als eine Art Datenbank mit allen Änderungen betrachtet werden, die die History repräsentieren. Diese Änderungen sind ein markierter Stand, ein sogenannter Commit, in der Projektentwicklung und werden als Working Copy gespeichert, die einer Kopie des gesamten Projektes entspricht. Ein Commit kann als Schnappschuss oder als kleiner Meilenstein betrachtet werden. Er beinhaltet neben der Working Copy einen Zeitstempel und eine Nachricht, die aussagt, was sich seit dem letzten Commit geändert hat. Die Entwicklungsarbeiten können dabei in mehreren Entwicklungszweigen (engl. Branches) erfolgen. Eine Abspaltung eines Projektes wird hingegen als Fork bezeichnet.
+\mbox{}\\Abhilfe für dieses Problem bietet ein Versionskontrollsystem, auch als VCS (Version Control System) bezeichnet, das Änderungen in der Projektentwicklung festhält (vgl. Dirk 2019, \cite{vcs_2019}, 15.11.2020). Dadurch ist es möglich zu einem späteren beliebigen Zeitpunkt auf ältere Versionen des Systems zurückzugreifen, den aktuellen Code mit früheren Versionen zu vergleichen oder Bugfixes zu implementieren. Arbeiten mehrere Entwickler an denselben Dateien im Quellcode, so kann mitverfolgt werden, welche Person welche Änderungen gemacht hat. Ein Projekt, das mit einem VCS verwaltet wird, wird Repository genannt. Ein Repository kann als eine Art Datenbank mit allen Änderungen betrachtet werden, die die History repräsentieren. Diese Änderungen sind ein markierter Stand, ein sogenannter Commit, in der Projektentwicklung und werden als Working Copy gespeichert, die einer Kopie des gesamten Projektes entspricht. Ein Commit kann als Schnappschuss oder als kleiner Meilenstein betrachtet werden. Er beinhaltet neben der Working Copy einen Zeitstempel und eine Nachricht, die aussagt, was sich seit dem letzten Commit geändert hat. Die Entwicklungsarbeiten können dabei in mehreren Entwicklungszweigen (engl. Branches) erfolgen. Eine Abspaltung eines Projektes wird hingegen als Fork bezeichnet.
 
 \newpage
 Es gibt drei Arten von Version Control Systems:
@@ -40,7 +40,7 @@ Es gibt drei Arten von Version Control Systems:
 \end{itemize}
 
 \subsection{Git}
-Git ist ein Open-Source-Tool, das von Linus Torvalds, dem Entwickler des Betriebssystems Linux, entwickelt wurde und stammt aus dem Jahr 2005 (Atlassian, vgl. \cite{atlassian_git_2020}, 15.11.2020). Heutzutage zählt es zu eines der weitverbreitesten Versionsverwaltungssysteme weltweit. Die Softwareentwickler kommen sowohl aus dem kommerziellen als auch aus dem öffentlichen Bereich. Aufgrund seiner Architektur ist Git ein Distributed VCS (DVCS, dt. verteiltes VCS) und funktioniert in zahlreichen Plattformen und Entwicklungsumgebungen. Das bedeutet, dass auf die gesamte History mit allen Entwicklungsarbeiten von jedem Standort aus zugegriffen werden kann. Neben seinem verteilten System ist Git unter anderem auf Performance, Sicherheit und Flexibilität fokussiert.
+Git ist ein Open-Source-Tool, das von Linus Torvalds, dem Entwickler des Betriebssystems Linux, entwickelt wurde und stammt aus dem Jahr 2005 (vgl. Atlassian, \cite{atlassian_git_2020}, 15.11.2020). Heutzutage zählt es zu eines der weitverbreitesten Versionsverwaltungssysteme weltweit. Die Softwareentwickler kommen sowohl aus dem kommerziellen als auch aus dem öffentlichen Bereich. Aufgrund seiner Architektur ist Git ein Distributed VCS (DVCS, dt. verteiltes VCS) und funktioniert in zahlreichen Plattformen und Entwicklungsumgebungen. Das bedeutet, dass auf die gesamte History mit allen Entwicklungsarbeiten von jedem Standort aus zugegriffen werden kann. Neben seinem verteilten System ist Git unter anderem auf Performance, Sicherheit und Flexibilität fokussiert.
 
 \paragraph{Snapshots}\mbox{}\\
 Bei den meisten VCS werden Informationen als eine Liste mit den Änderungen innerhalb der Dateien gespeichert. Das bedeutet, dass bei jeder Version nur die Dateien festgehalten werden, deren Inhalt sich während den Entwicklungsarbeiten geändert haben.
@@ -90,7 +90,7 @@ Mehrere Commits aus zwei Entwicklungszweigen werden in einen einheitlichen Verla
 Im Gegensatz zu einfachen Commits während der Entwicklung, haben Merge-Commits zwei übergeordnete Commits. Sind Änderungen in beiden Branches vorgenommen worden, können von Git nicht automatisch zusammengeführt werden. Dies führt oftmals zu einem Merge-Konflikt, der von dem Entwickler manuell beseitigt werden muss. Im Normalfall kann Git die Commit-Historie automatischen zusammenführen, es sei denn es gibt Änderungen im aktuellen Branch und im Ziel-Branch, die zu Konflikten im Projekt führen.
 
  \mbox{}\\
-Grundsätzlich gibt es zwei Arten von Merges (Atlassian, vgl. \cite{atlassian_git_merge_2021}, 09.04.2020):
+Grundsätzlich gibt es zwei Arten von Merges (vgl. Atlassian, \cite{atlassian_git_merge_2021}, 09.04.2020):
 
 \begin{itemize}
 	\item \textbf{Fast-Forward-Merge:}\\
@@ -146,12 +146,12 @@ Grundsätzlich gibt es zwei Arten von Merges (Atlassian, vgl. \cite{atlassian_gi
 \end{itemize}
 
 \subsection{GitLab}
-Im Jahr 2011 ist GitLab von den ukrainischen Entwicklern Dmitri Saparoschez und Valery Sizov ursprünglich in der Programmiersprache Ruby on Rails und mittlerweile noch zusätzlich in Go und Vue.js geschrieben worden. Es ist eine Webapplikation zur Versionskontrolle, das auf Git basiert, in mehr als 100.000 Unternehmen zum Einsatz kommt und von etwa 30 Millionen registrierten Benutzern genutzt wird (GitLab, vgl. \cite{gitlab_2020}, 30.11.2020). Neben dem Arbeiten mit Git stellt diese Anwendung einige weitere Funktionen zur Verfügung. Diese sind beispielsweise eine integrierte und kostenlose Continuous Integration/Delivery (CI/CD), das Issue Tracking, die Wiki-Funktion und vieles mehr. Zusätzlich können Rollen zugewiesen werden, die die Berechtigungen von den jeweiligen Nutzern festlegen.
+Im Jahr 2011 ist GitLab von den ukrainischen Entwicklern Dmitri Saparoschez und Valery Sizov ursprünglich in der Programmiersprache Ruby on Rails und mittlerweile noch zusätzlich in Go und Vue.js geschrieben worden. Es ist eine Webapplikation zur Versionskontrolle, das auf Git basiert, in mehr als 100.000 Unternehmen zum Einsatz kommt und von etwa 30 Millionen registrierten Benutzern genutzt wird (vgl. GitLab, \cite{gitlab_2020}, 30.11.2020). Neben dem Arbeiten mit Git stellt diese Anwendung einige weitere Funktionen zur Verfügung. Diese sind beispielsweise eine integrierte und kostenlose Continuous Integration/Delivery (CI/CD), das Issue Tracking, die Wiki-Funktion und vieles mehr. Zusätzlich können Rollen zugewiesen werden, die die Berechtigungen von den jeweiligen Nutzern festlegen.
 
 \mbox{}\\Seit 2013 gibt es zwei Linzenzmodelle von GitLab. Die Community Edition (CE) wird unter der MIT-Lizenz als Open-Source-Software entwickelt und ist auf gitlab.com als Software as a Service (SaaS) erreichbar. Hingegen wird die Enterprise Edition unter einer proprietären Lizenz entwickelt und beinhaltet mehr Funktionen, die für Unternehmen relevanter sind.
 
 \section{Hypertext Markup Language}
-Hypertext Markup Language, kurz HTML, ist eine Auszeichnungssprache, welche den Inhalt und die Struktur einer Webseite definiert. Die Strukturierung kann dabei in Paragraphen, Listen, Bildern, Tabellen und einigen anderen Elemente erfolgen (MDN Web Docs, vgl. \cite{html_2021}, 10.04.2021). 
+Hypertext Markup Language, kurz HTML, ist eine Auszeichnungssprache, welche den Inhalt und die Struktur einer Webseite definiert. Die Strukturierung kann dabei in Paragraphen, Listen, Bildern, Tabellen und einigen anderen Elemente erfolgen (vgl. MDN Web Docs, \cite{html_2021}, 10.04.2021). 
 
 \mbox{}\\
 \textbf{''Hypertext''} bezeichnet die Links, die entweder auf HTML-Elemente innerhalb einer Webseite verlinkt oder mehrere Webseiten miteinander verbindet. Grundsätzlich werden mithilfe von Links Inhalte in das Internet hochgeladen und mit Seiten verlinkt.\\
@@ -253,10 +253,10 @@ Die folgenden HTML-Tags bilden zusammen eine HTML-Seite:
 
 \newpage
 \section{JavaScript}
-JavaScript, kurz JS, basiert auf dem ECMAScript Standard und ist eine dynamische, funktionale und objektorientierte Skriptsprache, die im Mai 1995 innerhalb von 10 Tagen von Brendan Eich entwickelt worden ist (MDN Web Docs, vgl. \cite{javascript_2021}, 11.02.2021). Erstmals ist sie bei Netscape für dynamisches HTML in Webbrowsern zum Einsatz gekommen. Mittlerweile wird JS auch auf Servern oder Mikrocontrollern verwendet.
+JavaScript, kurz JS, basiert auf dem ECMAScript Standard und ist eine dynamische, funktionale und objektorientierte Skriptsprache, die im Mai 1995 innerhalb von 10 Tagen von Brendan Eich entwickelt worden ist (vgl. MDN Web Docs, \cite{javascript_2021}, 11.02.2021). Erstmals ist sie bei Netscape für dynamisches HTML in Webbrowsern zum Einsatz gekommen. Mittlerweile wird JS auch auf Servern oder Mikrocontrollern verwendet.
 
 \subsection{ECMAScript}
-ECMAScript ist von Brendan Eich bei Netscape entwickelt worden und gibt vor welche JavaScript Funktionalitäten von Webbrowsern implementiert werden müssen (Harband und Smith 2020, vgl. \cite{ecma_2020}, 10.04.2021). Somit kann erreicht werden, dass Webseiten ohne Bedenken in jedem beliebigen Browser funktionsfähig sind. Gäbe es diesen Standard nicht, müssten Polyfills eingesetzt werden. Diese würden Funktionalitäten in JavaScript implementieren, die jeder Browser verstehen sollte. Diese Notlösung führt dazu, dass zusätzlich mehr programmiert wird, der Nutzer viel größere Dateien herunterladet, die Lösung nicht nativ ist und die Performance darunter leidet. 
+ECMAScript ist von Brendan Eich bei Netscape entwickelt worden und gibt vor welche JavaScript Funktionalitäten von Webbrowsern implementiert werden müssen (vgl. Harband und Smith 2020, \cite{ecma_2020}, 10.04.2021). Somit kann erreicht werden, dass Webseiten ohne Bedenken in jedem beliebigen Browser funktionsfähig sind. Gäbe es diesen Standard nicht, müssten Polyfills eingesetzt werden. Diese würden Funktionalitäten in JavaScript implementieren, die jeder Browser verstehen sollte. Diese Notlösung führt dazu, dass zusätzlich mehr programmiert wird, der Nutzer viel größere Dateien herunterladet, die Lösung nicht nativ ist und die Performance darunter leidet. 
 
 \subsection{Dynamische Typisierung}
 JavaScript ist schwach typisierte und dynamische Programmiersprache. Wenn Variablen erstellt werden, haben sie keinen expliziten Datentyp. Anhand des Wertes einer Variable ändert sich intern auch ihr Datentyp. Der aktuellste ECMAScript Standard definiert neun Typen, die in zwei Kategorien unterteilt werden können.
@@ -304,7 +304,7 @@ JavaScript ist schwach typisierte und dynamische Programmiersprache. Wenn Variab
 Dasselbe gilt für die Überprüfung der Ungleichheit \texttt{!=} und \texttt{!==}.
 
 \section{TypeScript}
-TypeScript (TS) ist eine Erweiterung von JavaScript und basiert ebenfalls auf den ECMAScript Standards (Malcher, Hoppe und Koppenhagen 2020, vgl. \cite{typescript_2020}). Im Gegensatz zu JavaScript besitzt TypeScript ein statisches Typsystem. An und für sich wird TypeScript nicht von Browsern unterstützt, denn es handelt sich um eine Programmiersprache, die mittels eines Kompilierers diese Sprache auf JavaScript umwandelt. Man spricht hierbei von einem Transpiler. Mit einem Typsystem ist es möglich, bereits zur Entwicklungszeit Fehler und Probleme ausfindig zu machen.\\
+TypeScript (TS) ist eine Erweiterung von JavaScript und basiert ebenfalls auf den ECMAScript Standards (vgl. Malcher, Hoppe und Koppenhagen 2020, \cite{typescript_2020}). Im Gegensatz zu JavaScript besitzt TypeScript ein statisches Typsystem. An und für sich wird TypeScript nicht von Browsern unterstützt, denn es handelt sich um eine Programmiersprache, die mittels eines Kompilierers diese Sprache auf JavaScript umwandelt. Man spricht hierbei von einem Transpiler. Mit einem Typsystem ist es möglich, bereits zur Entwicklungszeit Fehler und Probleme ausfindig zu machen.\\
 TypeScript ermöglicht auch die Verwendung von neuen ECMAScript-Features, weshalb Projekte mit den neuesten Features erstellt werden können. Der Kompilierer ist dafür zuständig, das Browser mit älteren Versionen des ECMAScriptes den transpilierten Code ausführen können.
 
 \newpage
@@ -373,12 +373,12 @@ Der TypeScript Compiler gibt dem Entwickler einen Spielraum, gewisse Einstellung
 \section{Node.js und npm}
 
 \subsection{Node.js}
-Node.js ist eine JavaScript-Laufzeitumgebung mit der JavaScript-Code außerhalb eines Webbrowsers ausgeführt werden kann (OpenJS Foundation, vgl.\cite{nodejs_2021}, 10.04.2021). Somit kann der Code nicht nur clientseitig, sondern auch serverseitig verwendet werden. Node.js hat eine eventbasierte Architektur und wird auf der im Jahr 2009 von Google entwickelten Open-Source-JavaScript-Engine V8 ausgeführt, der ursprünglich nur für Browser verwendet worden ist.\\
+Node.js ist eine JavaScript-Laufzeitumgebung mit der JavaScript-Code außerhalb eines Webbrowsers ausgeführt werden kann (vgl. OpenJS Foundation, \cite{nodejs_2021}, 10.04.2021). Somit kann der Code nicht nur clientseitig, sondern auch serverseitig verwendet werden. Node.js hat eine eventbasierte Architektur und wird auf der im Jahr 2009 von Google entwickelten Open-Source-JavaScript-Engine V8 ausgeführt, der ursprünglich nur für Browser verwendet worden ist.\\
 Zu den Einsatzgebieten gehören die Entwicklung von Webservern, die Erstellung von Skripten oder Tools im Terminal sowie seit neuestem die Entwicklung von Desktopanwendungen. Neben der Laufzeitumgebung stellt Node.js seine Core-API zur Verfügung. Diese reicht von simplen Netzwerkzugriffen bis hin zu Zugriffen auf Dateien.
 
 \paragraph{Vorteile und Gründe zur Verwendung von Node.js}
 \mbox{}\\
-Mit seiner eventbasierten Architektur führt Node.js nur einen einzigen Thread aus, in dem ein Event Loop läuft. Im Gegensatz zu Node.js verwenden traditionelle Webframeworks für jede Anfrage auf den Server einen eigenen Thread. Näher betrachtet kann das Starten eines Threads einige Nachteile mit sich bringen. Angenommen ein Thread, der lediglich die Anfrage bearbeitet, benötigt 2 MB im Hauptspeicher, beginnt die Überlastung eines Servers mit 8 GB Hauptspeicher und 4000 gleichzeitigen Anfragen. Ein weiteres Beispiel ist in Blogpost von caustik's blog zu finden (caustik's blog 2012, vgl. \cite{nodejs_blogpost_2012}, 13.02.2021).\\
+Mit seiner eventbasierten Architektur führt Node.js nur einen einzigen Thread aus, in dem ein Event Loop läuft. Im Gegensatz zu Node.js verwenden traditionelle Webframeworks für jede Anfrage auf den Server einen eigenen Thread. Näher betrachtet kann das Starten eines Threads einige Nachteile mit sich bringen. Angenommen ein Thread, der lediglich die Anfrage bearbeitet, benötigt 2 MB im Hauptspeicher, beginnt die Überlastung eines Servers mit 8 GB Hauptspeicher und 4000 gleichzeitigen Anfragen. Ein weiteres Beispiel ist in Blogpost von caustik's blog zu finden (vgl. caustik's blog 2012, \cite{nodejs_blogpost_2012}, 13.02.2021).\\
 Mit der Verwendung eines einzigen Threads, muss auch dementsprechend mit Gefahren gerechnet werden.
 
 \mbox{}\\
@@ -386,14 +386,14 @@ Rechenintensive Anfragen könnten den einzigen Thread überlasten und alle ander
 
 \paragraph{Konkurrenz}
 \mbox{}\\
-Deno ist genauso wie Node.js eine JavaScript-Laufzeitumgebung und ist von demselben Entwickler Ryan Dahl (Deno, vgl. \cite{deno_2021}, 13.02.2021). Node.js hat viele Probleme gehabt und die Benutzerfreundlichkeit ist ebenfalls nicht zufriedenstellend gewesen. Aus diesem Grund ist Deno erstmals im Jahr 2018 veröffentlicht worden. Neben JavaScript wird auch TypeScript nativ unterstützt und ein großer Wert auf die Sicherheit mit Erlaubnissen gelegt. Ein Modulsystem wie npm kommt nicht mehr zum Einsatz. Externe Module beziehungsweise Bibliotheken werden mit absoluten Adressen importiert. Dieses Konzept ist von Golang inspiriert.
+Deno ist genauso wie Node.js eine JavaScript-Laufzeitumgebung und ist von demselben Entwickler Ryan Dahl (vgl. Deno, \cite{deno_2021}, 13.02.2021). Node.js hat viele Probleme gehabt und die Benutzerfreundlichkeit ist ebenfalls nicht zufriedenstellend gewesen. Aus diesem Grund ist Deno erstmals im Jahr 2018 veröffentlicht worden. Neben JavaScript wird auch TypeScript nativ unterstützt und ein großer Wert auf die Sicherheit mit Erlaubnissen gelegt. Ein Modulsystem wie npm kommt nicht mehr zum Einsatz. Externe Module beziehungsweise Bibliotheken werden mit absoluten Adressen importiert. Dieses Konzept ist von Golang inspiriert.
 
 \subsection{npm}
-Node Package Manager, kurz npm, ist ein Paketmanager, der die Verwaltung und Bereitstellung der Module und Abhängigkeiten pflegt (vgl. \cite{npm_2021}, 12.02.2021). Diese und jegliche andere Informationen stehen in der \texttt{package.json} Datei. npm setzt sich aus zwei Komponenten zusammen:
+Node Package Manager, kurz npm, ist ein Paketmanager, der die Verwaltung und Bereitstellung der Module und Abhängigkeiten pflegt (vgl. npm, \cite{npm_2021}, 12.02.2021). Diese und jegliche andere Informationen stehen in der \texttt{package.json} Datei. npm setzt sich aus zwei Komponenten zusammen:
 
 \paragraph{Registry}
 \mbox{}\\
-Die Registry beziehungsweise das Repository ist eine Plattform von npm selber, welche Entwickler die Möglichkeit gibt, Open-Source Software zu veröffentlichen, die als Packages bekannt sind (vgl. \cite{npm_registry_2021}, 09.04.2021). Der Schwerpunkt liegt hier bei JavaScript Libraries und Frameworks. Außerdem dürfen auch andere Dateien, wie zum Beispiel CSS oder TypeScript Deklarationen, hochgeladen werden.
+Die Registry beziehungsweise das Repository ist eine Plattform von npm selber, welche Entwickler die Möglichkeit gibt, Open-Source Software zu veröffentlichen, die als Packages bekannt sind (vgl. npm, \cite{npm_registry_2021}, 09.04.2021). Der Schwerpunkt liegt hier bei JavaScript Libraries und Frameworks. Außerdem dürfen auch andere Dateien, wie zum Beispiel CSS oder TypeScript Deklarationen, hochgeladen werden.
 \\
 Für Unternehmen oder Personen, die ihren Code nicht veröffentlichen wollen, besteht die Option sich einer npm Mitgliedschaft anzuschließen. Mit der Mitgliedschaft dürfen die Benutzer private packages hochladen. Die Zugriffsverteilung ist je nach Abonnement unterschiedlich und auf Einzelpersonen oder Mitglieder und Teams eines Unternehmens eingeschränkt.
 
@@ -401,10 +401,10 @@ Für Unternehmen oder Personen, die ihren Code nicht veröffentlichen wollen, be
 \textbf{Alternativen für die npm Registry sind:}
 
 \mbox{}\\
-\textbf{Verdaccio} ist eine simple und leichtgewichtige Registry zum selber Hosten. Die Open-Source Software eignet sich gut für Personen die sich kaum mit dem Einrichten von Produkten auseinandergesetzt haben, da keine Konfigurationen erforderlich sind (vgl. \cite{verdaccio_2021}, 09.04.2021).
+\textbf{Verdaccio} ist eine simple und leichtgewichtige Registry zum selber Hosten. Die Open-Source Software eignet sich gut für Personen die sich kaum mit dem Einrichten von Produkten auseinandergesetzt haben, da keine Konfigurationen erforderlich sind (vgl. Verdaccio, \cite{verdaccio_2021}, 09.04.2021).
 
 \mbox{}\\
-\textbf{Jfrog Artifactory} ist eine sogenannte One-Stop Solution Software. Jfrog Artifactory hat nicht nur die npm Registry integriert, sondern auch andere wie Maven, Rubygems, Docker, Go und etliche andere. Sie wird als die perfekte Lösung für große Unternehmen, die sich mit verschiedenen Technologien beschäftigen, bezeichnet (JFrog Ltd., vgl. \cite{jfrog_2021}, 09.04.2021). Die Zugriffe auf Packages oder zahlreiche andere Repository-Formate erfolgt mit einer Benutzer- und Rechteverwaltung. Jfrog Artifactory kann selbst gehostet oder auf der Cloud von Jfrog bereitgestellt werden.
+\textbf{Jfrog Artifactory} ist eine sogenannte One-Stop Solution Software. Jfrog Artifactory hat nicht nur die npm Registry integriert, sondern auch andere wie Maven, Rubygems, Docker, Go und etliche andere. Sie wird als die perfekte Lösung für große Unternehmen, die sich mit verschiedenen Technologien beschäftigen, bezeichnet (vgl. JFrog Ltd., \cite{jfrog_2021}, 09.04.2021). Die Zugriffe auf Packages oder zahlreiche andere Repository-Formate erfolgt mit einer Benutzer- und Rechteverwaltung. Jfrog Artifactory kann selbst gehostet oder auf der Cloud von Jfrog bereitgestellt werden.
 
 \paragraph{npm CLI}
 \mbox{}\\
@@ -412,10 +412,10 @@ Die größte Eigenschaft von der CLI, ist die Installation von einer npm Registr
 Für das Erstellen von npm Projekten wird der Befehl \texttt{npm init} benötigt. Hier fragt die npm CLI nach Informationen wie Projektname, Beschreibung, Author etc.
 
 \section{Jest}
-Jest ist ein Testing Framework für die JavaScript-Laufzeitumgebung NodeJS (Facebook, vgl. \cite{jest_2021}, 11.04.2021). Da Jest zuerst die Tests durchführt, die beim letzten Mal fehlgeschlagen sind und anschließend die Tests durchführt, die mehr Zeit beanspruchen, ist das parallele Testen sehr schnell. Jest bietet dem Entwickler die Möglichkeit, die Test Coverage zu evaluieren. Mit der Mocking API kann jedes beliebige Objekt gemockt werden.
+Jest ist ein Testing Framework für die JavaScript-Laufzeitumgebung NodeJS (vgl. Facebook, \cite{jest_2021}, 11.04.2021). Da Jest zuerst die Tests durchführt, die beim letzten Mal fehlgeschlagen sind und anschließend die Tests durchführt, die mehr Zeit beanspruchen, ist das parallele Testen sehr schnell. Jest bietet dem Entwickler die Möglichkeit, die Test Coverage zu evaluieren. Mit der Mocking API kann jedes beliebige Objekt gemockt werden.
 
 \section{Webpack}
-Webpack ist ein statischer Modul-Bundler für JavaScript-Applikationen (vgl. \cite{webpack_2021}, 11.02.2021). Mehrere JavaScript-Dateien werden zur Nutzung in einem Webbrowser zusammengeführt und zu einer oder mehreren Dateien gebündelt, abhängig von der Anzahl an Modulen. Diese Module werden intern in einem Abhängigkeitsgraphen dargestellt. Rekursiv beginnt dieser vom Eingangspunkt und fügt alle Abhängigkeiten in diesen Graphen ein. Somit wird nur der Code zusammengebündelt, der auch benötigt wird. \\
+Webpack ist ein statischer Modul-Bundler für JavaScript-Applikationen (vgl. Webpack, \cite{webpack_2021}, 11.02.2021). Mehrere JavaScript-Dateien werden zur Nutzung in einem Webbrowser zusammengeführt und zu einer oder mehreren Dateien gebündelt, abhängig von der Anzahl an Modulen. Diese Module werden intern in einem Abhängigkeitsgraphen dargestellt. Rekursiv beginnt dieser vom Eingangspunkt und fügt alle Abhängigkeiten in diesen Graphen ein. Somit wird nur der Code zusammengebündelt, der auch benötigt wird. \\
 Der Vorteil besteht darin, dass schnell eine Datei heruntergeladen werden kann, die verkleinert und gebündelt ist. 
 
 \mbox{}\\
